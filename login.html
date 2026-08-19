@@ -15,356 +15,731 @@
 
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* =========================
+   RESET
+========================= */
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f5f8fc;
-            color: #1e293b;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* ================= HEADER ================= */
-        header {
-            background: linear-gradient(135deg, #0f4c81, #16a34a);
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f8fc;
+    color: #1e293b;
+}
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
 
-        .logo-container img {
-            width: 65px;
-            height: auto;
-        }
+/* =========================
+   HEADER
+========================= */
 
-        .logo-container h1 {
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
+header {
+    background: linear-gradient(135deg, #0f4c81, #16a34a);
 
-        nav {
-            display: flex;
-            gap: 25px;
-        }
+    color: white;
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: 0.3s;
-        }
+    padding: 12px 6%;
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: 0.3s;
-        }
+    display: flex;
 
-        nav a:hover::after,
-        nav a.activo::after {
-            width: 100%;
-        }
+    justify-content: space-between;
 
-        /* ================= LOGIN ================= */
-        .login-section {
-            min-height: calc(100vh - 100px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 20px;
-            background:
-                radial-gradient(circle at top right, rgba(22, 163, 74, 0.08), transparent 35%),
-                radial-gradient(circle at bottom left, rgba(15, 76, 129, 0.08), transparent 35%);
-        }
+    align-items: center;
 
-        .login-card {
-            background: white;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 30px;
-            padding: 50px 40px;
-            box-shadow: 0 25px 60px rgba(15, 76, 129, 0.12);
-            text-align: center;
-            animation: fadeUp 0.8s ease;
-        }
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
 
-        .login-icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0f4c81, #16a34a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: 0 10px 30px rgba(15, 76, 129, 0.25);
-        }
+    position: sticky;
 
-        .login-card h2 {
-            color: #0f4c81;
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
+    top: 0;
 
-        .login-card p {
-            color: #64748b;
-            margin-bottom: 35px;
-            font-size: 0.95rem;
-        }
+    z-index: 1000;
+}
 
-        .input-group {
-            position: relative;
-            margin-bottom: 22px;
-            text-align: left;
-        }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #334155;
-        }
+/* =========================
+   LOGO + TÍTULO
+========================= */
 
-        .input-group input {
-            width: 100%;
-            padding: 14px 45px 14px 15px;
-            border: 1px solid #dbe2ea;
-            border-radius: 12px;
-            outline: none;
-            font-size: 1rem;
-            transition: 0.3s;
-            font-family: inherit;
-        }
+.logo-container {
+    display: flex;
 
-        .input-group input:focus {
-            border-color: #0f4c81;
-            box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.08);
-        }
+    align-items: center;
 
-        .input-group i {
-            position: absolute;
-            right: 15px;
-            top: 44px;
-            color: #94a3b8;
-        }
+    gap: 15px;
 
-        .toggle-password {
-            cursor: pointer;
-        }
+    flex: 1;
 
-        .btn-login {
-            width: 100%;
-            border: none;
-            padding: 15px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #0f4c81, #16a34a);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 12px 25px rgba(15, 76, 129, 0.18);
-            margin-top: 10px;
-        }
+    min-width: 0;
+}
 
-        .btn-login:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 35px rgba(15, 76, 129, 0.22);
-        }
 
-        .extra-links {
-            margin-top: 25px;
-            font-size: 0.9rem;
-        }
+.logo-container img {
+    width: 65px;
 
-        .extra-links a {
-            color: #0f4c81;
-            text-decoration: none;
-            font-weight: 500;
-        }
+    height: auto;
 
-        .extra-links a:hover {
-            text-decoration: underline;
-        }
+    object-fit: contain;
+}
 
-        /* ================= FOOTER ================= */
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 25px;
-            font-size: 0.9rem;
-        }
 
-        /* ================= ANIMACIÓN ================= */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
+.logo-container h1 {
+    font-size: 1.4rem;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    font-weight: 600;
 
-        /* ================= RESPONSIVE ================= */
-        /* RESPONSIVE */
-        @media(max-width:768px) {
+    white-space: nowrap;
 
-            /* =========================
-       HEADER EN CELULAR
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   MENÚ DESKTOP
+========================= */
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    position: relative;
+
+    transition: .3s;
+}
+
+
+nav a::after {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: white;
+
+    transition: .3s;
+}
+
+
+nav a:hover::after,
+nav a.activo::after {
+    width: 100%;
+}
+
+
+/* =========================
+   BOTÓN HAMBURGUESA
+========================= */
+
+.menuToggle {
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    padding: 5px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-section {
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(22, 163, 74, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(15, 76, 129, 0.08),
+            transparent 35%
+        );
+}
+
+
+/* =========================
+   TARJETA LOGIN
+========================= */
+
+.login-card {
+    background: white;
+
+    width: 100%;
+
+    max-width: 450px;
+
+    border-radius: 30px;
+
+    padding: 50px 40px;
+
+    box-shadow:
+        0 25px 60px rgba(15, 76, 129, 0.12);
+
+    text-align: center;
+
+    animation: fadeUp .8s ease;
+}
+
+
+/* =========================
+   ICONO LOGIN
+========================= */
+
+.login-icon {
+    width: 90px;
+
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 2.5rem;
+
+    box-shadow:
+        0 10px 30px rgba(15, 76, 129, 0.25);
+}
+
+
+/* =========================
+   TEXTOS LOGIN
+========================= */
+
+.login-card h2 {
+    color: #0f4c81;
+
+    margin-bottom: 10px;
+
+    font-size: 2rem;
+}
+
+
+.login-card > p {
+    color: #64748b;
+
+    margin-bottom: 35px;
+
+    font-size: .95rem;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+    position: relative;
+
+    margin-bottom: 22px;
+
+    text-align: left;
+}
+
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 500;
+
+    color: #334155;
+}
+
+
+.input-group input {
+    width: 100%;
+
+    padding: 14px 45px 14px 15px;
+
+    border:
+        1px solid #dbe2ea;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 1rem;
+
+    transition: .3s;
+
+    font-family: inherit;
+}
+
+
+.input-group input:focus {
+    border-color: #0f4c81;
+
+    box-shadow:
+        0 0 0 4px rgba(15, 76, 129, 0.08);
+}
+
+
+/* ICONOS INPUT */
+
+.input-group > i {
+    position: absolute;
+
+    right: 15px;
+
+    top: 44px;
+
+    color: #94a3b8;
+}
+
+
+/* OJO CONTRASEÑA */
+
+.toggle-password {
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   BOTÓN LOGIN
+========================= */
+
+.btn-login {
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    box-shadow:
+        0 12px 25px rgba(15, 76, 129, 0.18);
+
+    margin-top: 10px;
+}
+
+
+.btn-login:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 35px rgba(15, 76, 129, 0.22);
+}
+
+
+/* =========================
+   ENLACES EXTRA
+========================= */
+
+.extra-links {
+    margin-top: 25px;
+
+    font-size: .9rem;
+}
+
+
+.extra-links p {
+    margin: 0;
+}
+
+
+.extra-links a {
+    color: #0f4c81;
+
+    text-decoration: none;
+
+    font-weight: 500;
+}
+
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #0f172a;
+
+    color: #cbd5e1;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: .9rem;
+}
+
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   TABLETS Y CELULARES
+========================= */
+
+@media (max-width: 768px) {
+
+    /* =========================
+       HEADER
     ========================= */
 
-            header {
-                height: 70px;
+    header {
+        height: 70px;
 
-                flex-direction: row;
+        padding: 8px 5%;
 
-                padding: 8px 5%;
+        display: flex;
 
-                gap: 10px;
-            }
+        flex-direction: row;
 
-            .logo {
-                height: 48px;
-                width: auto;
-                object-fit: contain;
-            }
+        align-items: center;
 
-            .TituloPequeno {
-                font-size: .95rem;
-
-                margin-left: 5px;
-
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            /* BOTÓN HAMBURGUESA */
-
-            .menuToggle {
-                display: block;
-
-                margin-left: auto;
-
-                flex-shrink: 0;
-
-                border: none;
-                background: none;
-
-                font-size: 2rem;
-
-                color: #0f4c81;
-
-                cursor: pointer;
-            }
-
-            /* MENÚ */
-
-            header nav {
-                position: absolute;
-
-                top: 70px;
-                left: 0;
-
-                width: 100%;
-
-                background: white;
-
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
-
-                display: none;
-            }
-
-            header nav.menuAbierto {
-                display: block;
-            }
-
-            .menu {
-                flex-direction: column;
-
-                align-items: stretch;
-
-                gap: 0;
-
-                padding: 10px 0;
-            }
-
-            .menu li {
-                width: 100%;
-            }
-
-            .menu a {
-                display: block;
-
-                width: 100%;
-
-                text-align: center;
-
-                padding: 13px 20px;
-
-                font-size: .95rem;
-            }
-
-            .menu a:hover {
-                background: #f0fdf4;
-            }
+        gap: 10px;
+    }
 
 
-            /* =========================
-       RESTO DE LA PÁGINA
+    /* LOGO */
+
+    .logo-container {
+        min-width: 0;
+
+        gap: 10px;
+    }
+
+
+    .logo-container img {
+        width: 48px;
+
+        height: 48px;
+
+        object-fit: contain;
+    }
+
+
+    /* TÍTULO */
+
+    .logo-container h1 {
+        font-size: .95rem;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* =========================
+       BOTÓN HAMBURGUESA
     ========================= */
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+    .menuToggle {
+        display: block;
 
-            .slide img {
-                height: 300px;
-            }
+        color: white;
 
-        }
+        font-size: 2rem;
 
-        .menuToggle {
-            display: none;
+        margin-left: auto;
+    }
 
-            border: none;
-            background: none;
 
-            font-size: 2rem;
-            color: #0f4c81;
+    /* =========================
+       MENÚ MOBILE
+    ========================= */
 
-            cursor: pointer;
-        }
+    header nav {
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, .12);
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 10px 0;
+    }
+
+
+    /* MENÚ ABIERTO */
+
+    header nav.menuAbierto {
+        display: flex;
+    }
+
+
+    /* ENLACES */
+
+    header nav a {
+        display: block;
+
+        width: 100%;
+
+        padding: 14px 20px;
+
+        text-align: center;
+
+        color: #0f4c81;
+
+        font-size: .95rem;
+
+        transition: .3s;
+    }
+
+
+    /* QUITAR LÍNEA INFERIOR */
+
+    header nav a::after {
+        display: none;
+    }
+
+
+    /* HOVER */
+
+    header nav a:hover,
+    header nav a.activo {
+        background: #f0fdf4;
+
+        color: #16a34a;
+    }
+
+
+    /* =========================
+       LOGIN
+    ========================= */
+
+    .login-section {
+        min-height: calc(100vh - 70px);
+
+        padding: 40px 20px;
+    }
+
+
+    .login-card {
+        max-width: 420px;
+
+        padding: 40px 25px;
+
+        border-radius: 25px;
+    }
+
+
+    .login-icon {
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 2rem;
+
+        margin-bottom: 20px;
+    }
+
+
+    .login-card h2 {
+        font-size: 1.7rem;
+    }
+
+
+    .login-card > p {
+        font-size: .88rem;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        font-size: .8rem;
+
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 8px 4%;
+    }
+
+
+    .logo-container {
+        gap: 8px;
+    }
+
+
+    .logo-container img {
+        width: 42px;
+
+        height: 42px;
+    }
+
+
+    .logo-container h1 {
+        font-size: .82rem;
+    }
+
+
+    .menuToggle {
+        font-size: 1.8rem;
+    }
+
+
+    .login-section {
+        padding: 30px 15px;
+    }
+
+
+    .login-card {
+        padding: 35px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .login-card h2 {
+        font-size: 1.5rem;
+    }
+
+
+    .input-group input {
+        padding: 13px 42px 13px 13px;
+
+        font-size: .9rem;
+    }
+
+
+    .btn-login {
+        padding: 14px;
+
+        font-size: .95rem;
+    }
+
+}
+
     </style>
 </head>
 

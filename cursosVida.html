@@ -16,448 +16,902 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* =========================
+   RESET
+========================= */
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8fafc;
-            color: #1f2937;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        ul {
-            list-style: none;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fafc;
+    color: #1f2937;
+}
 
-        a {
-            text-decoration: none;
-        }
+ul {
+    list-style: none;
+}
 
-        /* HEADER */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 6%;
-            z-index: 1000;
-        }
-
-        .logo {
-            height: 60px;
-        }
-
-        .TituloPequeno {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #0f4c81;
-            flex: 1;
-            margin-left: 15px;
-        }
-
-        .menu {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .menu a {
-            color: #1e3a8a;
-            font-weight: 600;
-            transition: .3s;
-        }
-
-        .menu a:hover,
-        .menu .activo {
-            color: #16a34a;
-        }
-
-        .menu .fa {
-            font-size: 1.2rem;
-        }
-
-        /* HERO */
-
-        .heroCursos {
-            min-height: 55vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 84px;
-            text-align: center;
-            padding: 80px 8%;
-            color: white;
-
-            background:
-                linear-gradient(rgba(15, 76, 129, .85),
-                    rgba(22, 163, 74, .75)),
-                url("Imagenes/cursoVidaprincipal.jpg");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .heroCursos h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .heroCursos p {
-            max-width: 900px;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, .12);
-            padding: 25px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        /* CURSOS */
-
-        .contenedorCursos {
-            width: 90%;
-            margin: 80px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .cursoCard {
-            background: white;
-            border-radius: 25px;
-            padding: 45px 25px;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
-            transition: .4s;
-            color: #0f4c81;
-        }
-
-        .cursoCard:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
-        }
+a {
+    text-decoration: none;
+}
 
 
+/* =========================
+   HEADER
+========================= */
 
-        .cursoCard i.bxs-heart {
-            font-size: 80px;
-            color: rgba(182, 56, 161, 0.75);
-            margin-bottom: 20px;
-        }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 
-        .cursoCard i.bxs-baby-carriage {
-            font-size: 80px;
-            color: rgba(37, 99, 235, .85);
-            margin-bottom: 20px;
-        }
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
 
-        .cursoCard i.bxs-graduation {
-            font-size: 80px;
-            color: rgba(124, 58, 237, .85);
-            margin-bottom: 20px;
-        }
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
 
-        .cursoCard i.bxs-user {
-            font-size: 80px;
-            color: rgba(6, 182, 212, .75);
-            margin-bottom: 20px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .cursoCard i.bxs-briefcase {
-            font-size: 80px;
-            color: rgba(22, 163, 74, .85);
-            margin-bottom: 20px;
-        }
+    padding: 12px 6%;
 
-        .cursoCard i.bxs-user-pin {
-            font-size: 80px;
-            color: rgba(251, 191, 36, .75);
-            margin-bottom: 20px;
-        }
+    z-index: 1000;
+}
 
-        .cursoCard h2 {
-            font-size: 1.5rem;
-        }
 
-        /* FOOTER */
+/* LOGO */
 
-        footer {
-            background: #0f172a;
-            color: #cbd5e1;
-            padding: 50px 8%;
-        }
+.logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
 
-        .footerGrid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
 
-        footer h3 {
-            color: white;
-            margin-bottom: 15px;
-        }
+/* TÍTULO */
 
-        footer a {
-            color: #cbd5e1;
-        }
+.TituloPequeno {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f4c81;
 
-        footer a:hover {
-            color: #4ade80;
-        }
+    flex: 1;
+    margin-left: 15px;
+}
 
-        .social a {
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
 
-        .copyright {
-            text-align: center;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, .1);
-            padding-top: 20px;
-        }
+/* MENÚ */
 
-        /* CARTILLAS COMPLEMENTARIAS */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-        .cartillasEspeciales {
-            background: linear-gradient(135deg,
-                    #eef7ff,
-                    #f0fdf4);
-            text-align: center;
-        }
+.menu a {
+    color: #1e3a8a;
+    font-weight: 600;
+    transition: .3s;
+}
 
-        .cartillasEspeciales .tituloSeccion {
-            text-align: center;
-            margin-bottom: 15px;
-        }
+.menu a:hover,
+.menu .activo {
+    color: #16a34a;
+}
 
-        .cartillasEspeciales .subtituloSeccion {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
+.menu .fa {
+    font-size: 1.2rem;
+}
 
-        .gridCartillas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
 
-        .cartillaCard {
-            background: white;
-            padding: 35px;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
-            transition: .3s;
-            color: #1f2937;
-        }
+/* =========================
+   BOTÓN HAMBURGUESA
+========================= */
 
-        .cartillaCard:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .12);
-        }
+.menuToggle {
+    display: none;
 
-        .cartillaCard i {
-            font-size: 4rem;
-            color: #16a34a;
-            margin-bottom: 20px;
-        }
+    border: none;
+    background: transparent;
 
-        .cartillaCard h3 {
-            color: #0f4c81;
-            margin-bottom: 15px;
-        }
+    font-size: 2rem;
+    color: #0f4c81;
 
-        .cartillaCard p {
-            color: #64748b;
-            margin-bottom: 20px;
-        }
+    cursor: pointer;
 
-        .cartillaCard span {
-            display: inline-block;
-            background: #16a34a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-        }
+    padding: 5px;
+}
 
-        /* RESPONSIVE */
-        /* RESPONSIVE */
-        @media(max-width:768px) {
 
-            /* =========================
-       HEADER EN CELULAR
+/* =========================
+   HERO
+========================= */
+
+.heroCursos {
+    min-height: 55vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 84px;
+
+    text-align: center;
+
+    padding: 80px 8%;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(15, 76, 129, .85),
+            rgba(22, 163, 74, .75)
+        ),
+        url("Imagenes/cursoVidaprincipal.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* TÍTULO HERO */
+
+.heroCursos h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+
+/* TEXTO HERO */
+
+.heroCursos p {
+    max-width: 900px;
+
+    font-size: 1.1rem;
+
+    background: rgba(255, 255, 255, .12);
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* =========================
+   CURSOS DE VIDA
+========================= */
+
+.contenedorCursos {
+    width: 90%;
+
+    margin: 80px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 30px;
+}
+
+
+/* TARJETA */
+
+.cursoCard {
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 45px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .08);
+
+    transition: .4s;
+
+    color: #0f4c81;
+}
+
+
+/* EFECTO HOVER */
+
+.cursoCard:hover {
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .15);
+}
+
+
+/* =========================
+   ICONOS DE CURSOS
+========================= */
+
+.cursoCard i.bxs-heart {
+    font-size: 80px;
+    color: rgba(182, 56, 161, 0.75);
+    margin-bottom: 20px;
+}
+
+.cursoCard i.bxs-baby-carriage {
+    font-size: 80px;
+    color: rgba(37, 99, 235, .85);
+    margin-bottom: 20px;
+}
+
+.cursoCard i.bxs-graduation {
+    font-size: 80px;
+    color: rgba(124, 58, 237, .85);
+    margin-bottom: 20px;
+}
+
+.cursoCard i.bxs-user {
+    font-size: 80px;
+    color: rgba(6, 182, 212, .75);
+    margin-bottom: 20px;
+}
+
+.cursoCard i.bxs-briefcase {
+    font-size: 80px;
+    color: rgba(22, 163, 74, .85);
+    margin-bottom: 20px;
+}
+
+.cursoCard i.bxs-user-pin {
+    font-size: 80px;
+    color: rgba(251, 191, 36, .75);
+    margin-bottom: 20px;
+}
+
+
+/* TÍTULO DE TARJETA */
+
+.cursoCard h2 {
+    font-size: 1.5rem;
+}
+
+
+/* =========================
+   CARTILLAS COMPLEMENTARIAS
+========================= */
+
+.cartillasEspeciales {
+    background:
+        linear-gradient(
+            135deg,
+            #eef7ff,
+            #f0fdf4
+        );
+
+    text-align: center;
+
+    padding: 60px 8%;
+}
+
+
+/* ENCABEZADO */
+
+.encabezadoSeccion {
+    position: relative;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+}
+
+
+/* TÍTULO */
+
+.encabezadoSeccion .tituloSeccion {
+    margin: 0;
+
+    text-align: center;
+
+    color: #0f4c81;
+
+    font-size: 2rem;
+}
+
+
+/* FECHA */
+
+.fechaActualizacion {
+    text-align: right;
+
+    color: #64748b;
+
+    font-size: .82rem;
+
+    margin-bottom: 8px;
+}
+
+.fechaActualizacion strong {
+    color: #0f4c81;
+
+    font-weight: 600;
+}
+
+
+/* SUBTÍTULO */
+
+.subtituloSeccion {
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: 0 auto 40px;
+
+    color: #64748b;
+}
+
+
+/* =========================
+   GRID CARTILLAS
+========================= */
+
+.gridCartillas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 30px;
+
+    margin-top: 40px;
+}
+
+
+/* TARJETA CARTILLA */
+
+.cartillaCard {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .08);
+
+    transition: .3s;
+
+    color: #1f2937;
+}
+
+
+/* HOVER */
+
+.cartillaCard:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .12);
+}
+
+
+/* ICONO */
+
+.cartillaCard i {
+    font-size: 4rem;
+
+    color: #16a34a;
+
+    margin-bottom: 20px;
+}
+
+
+/* TÍTULO */
+
+.cartillaCard h3 {
+    color: #0f4c81;
+
+    margin-bottom: 15px;
+}
+
+
+/* TEXTO */
+
+.cartillaCard p {
+    color: #64748b;
+
+    margin-bottom: 20px;
+}
+
+
+/* BOTÓN */
+
+.cartillaCard span {
+    display: inline-block;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.cartillaCard:hover span {
+    background: #15803d;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #0f172a;
+
+    color: #cbd5e1;
+
+    padding: 50px 8%;
+}
+
+
+/* GRID */
+
+.footerGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 40px;
+}
+
+
+/* TÍTULOS */
+
+footer h3 {
+    color: white;
+
+    margin-bottom: 15px;
+}
+
+
+/* ENLACES */
+
+footer a {
+    color: #cbd5e1;
+
+    transition: .3s;
+}
+
+footer a:hover {
+    color: #4ade80;
+}
+
+
+/* REDES */
+
+.social a {
+    font-size: 1.5rem;
+
+    margin-right: 15px;
+}
+
+
+/* COPYRIGHT */
+
+.copyright {
+    text-align: center;
+
+    margin-top: 30px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, .1);
+
+    padding-top: 20px;
+}
+
+
+/* =========================
+   RESPONSIVE
+   TABLETS Y CELULARES
+========================= */
+
+@media (max-width: 768px) {
+
+    /* =========================
+       HEADER
     ========================= */
 
-            header {
-                height: 70px;
+    header {
+        height: 70px;
 
-                flex-direction: row;
+        padding: 8px 5%;
 
-                padding: 8px 5%;
+        display: flex;
 
-                gap: 10px;
-            }
+        flex-direction: row;
 
-            .logo {
-                height: 48px;
-                width: auto;
-                object-fit: contain;
-            }
+        align-items: center;
 
-            .TituloPequeno {
-                font-size: .95rem;
-
-                margin-left: 5px;
-
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            /* BOTÓN HAMBURGUESA */
-
-            .menuToggle {
-                display: block;
-
-                margin-left: auto;
-
-                flex-shrink: 0;
-
-                border: none;
-                background: none;
-
-                font-size: 2rem;
-
-                color: #0f4c81;
-
-                cursor: pointer;
-            }
-
-            /* MENÚ */
-
-            header nav {
-                position: absolute;
-
-                top: 70px;
-                left: 0;
-
-                width: 100%;
-
-                background: white;
-
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
-
-                display: none;
-            }
-
-            header nav.menuAbierto {
-                display: block;
-            }
-
-            .menu {
-                flex-direction: column;
-
-                align-items: stretch;
-
-                gap: 0;
-
-                padding: 10px 0;
-            }
-
-            .menu li {
-                width: 100%;
-            }
-
-            .menu a {
-                display: block;
-
-                width: 100%;
-
-                text-align: center;
-
-                padding: 13px 20px;
-
-                font-size: .95rem;
-            }
-
-            .menu a:hover {
-                background: #f0fdf4;
-            }
+        gap: 10px;
+    }
 
 
-            /* =========================
-       RESTO DE LA PÁGINA
+    /* LOGO */
+
+    .logo {
+        height: 48px;
+
+        width: auto;
+
+        object-fit: contain;
+    }
+
+
+    /* TÍTULO */
+
+    .TituloPequeno {
+        font-size: .95rem;
+
+        margin-left: 5px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    /* =========================
+       BOTÓN HAMBURGUESA
     ========================= */
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+    .menuToggle {
+        display: block;
 
-            .slide img {
-                height: 300px;
-            }
+        margin-left: auto;
 
-        }
-        
+        flex-shrink: 0;
 
-        .menuToggle {
-            display: none;
+        border: none;
 
-            border: none;
-            background: none;
+        background: transparent;
 
-            font-size: 2rem;
-            color: #0f4c81;
+        font-size: 2rem;
 
-            cursor: pointer;
-        }
+        color: #0f4c81;
 
-        .encabezadoSeccion {
-            position: relative;
-            margin-bottom: 40px;
-            text-align: center;
-        }
+        cursor: pointer;
 
-        .encabezadoSeccion .titulo {
-            margin: 0;
-            text-align: center;
-        }
+        padding: 5px;
+    }
 
-        .fechaActualizacion {
-            text-align: right;
-            color: #64748b;
-            font-size: .82rem;
-            margin-bottom: 8px;
-        }
 
-        .fechaActualizacion strong {
-            color: #0f4c81;
-            font-weight: 600;
-        }
+    /* =========================
+       MENÚ MOBILE
+    ========================= */
 
-        @media(max-width:768px) {
+    header nav {
+        position: absolute;
 
-            .fechaActualizacion {
-                text-align: center;
-                margin-bottom: 10px;
-            }
+        top: 70px;
 
-        }
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, .10);
+
+        display: none;
+    }
+
+
+    /* MENÚ ABIERTO */
+
+    header nav.menuAbierto {
+        display: block;
+    }
+
+
+    /* LISTA */
+
+    .menu {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 0;
+    }
+
+
+    /* ELEMENTOS */
+
+    .menu li {
+        width: 100%;
+    }
+
+
+    /* ENLACES */
+
+    .menu a {
+        display: block;
+
+        width: 100%;
+
+        text-align: center;
+
+        padding: 13px 20px;
+
+        font-size: .95rem;
+
+        transition: .3s;
+    }
+
+
+    /* HOVER */
+
+    .menu a:hover {
+        background: #f0fdf4;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .heroCursos {
+        min-height: 60vh;
+
+        margin-top: 70px;
+
+        padding: 60px 6%;
+    }
+
+
+    .heroCursos h1 {
+        font-size: 2.5rem;
+
+        margin-bottom: 15px;
+    }
+
+
+    .heroCursos p {
+        font-size: .95rem;
+
+        padding: 20px;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       CURSOS
+    ========================= */
+
+    .contenedorCursos {
+        width: 90%;
+
+        margin: 50px auto;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(240px, 1fr));
+
+        gap: 20px;
+    }
+
+
+    .cursoCard {
+        padding: 35px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .cursoCard:hover {
+        transform: translateY(-5px);
+    }
+
+
+    .cursoCard h2 {
+        font-size: 1.3rem;
+    }
+
+
+    /* ICONOS */
+
+    .cursoCard i.bxs-heart,
+    .cursoCard i.bxs-baby-carriage,
+    .cursoCard i.bxs-graduation,
+    .cursoCard i.bxs-user,
+    .cursoCard i.bxs-briefcase,
+    .cursoCard i.bxs-user-pin {
+        font-size: 65px;
+
+        margin-bottom: 15px;
+    }
+
+
+    /* =========================
+       CARTILLAS
+    ========================= */
+
+    .cartillasEspeciales {
+        padding: 50px 6%;
+    }
+
+
+    .encabezadoSeccion {
+        margin-bottom: 25px;
+    }
+
+
+    .encabezadoSeccion .tituloSeccion {
+        font-size: 1.7rem;
+    }
+
+
+    .fechaActualizacion {
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+
+
+    .subtituloSeccion {
+        font-size: .95rem;
+
+        line-height: 1.6;
+    }
+
+
+    .gridCartillas {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 25px;
+    }
+
+
+    .cartillaCard {
+        padding: 30px 20px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 40px 6%;
+
+        text-align: center;
+    }
+
+
+    .footerGrid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .social {
+        margin-top: 10px;
+    }
+
+
+    .copyright {
+        font-size: .85rem;
+
+        line-height: 1.6;
+    }
+
+}
+
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media (max-width: 480px) {
+
+    .logo {
+        height: 43px;
+    }
+
+
+    .TituloPequeno {
+        font-size: .82rem;
+    }
+
+
+    .menuToggle {
+        font-size: 1.8rem;
+    }
+
+
+    .heroCursos {
+        min-height: 65vh;
+
+        padding: 50px 5%;
+    }
+
+
+    .heroCursos h1 {
+        font-size: 2rem;
+    }
+
+
+    .heroCursos p {
+        font-size: .88rem;
+
+        padding: 16px;
+    }
+
+
+    .contenedorCursos {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        margin: 40px auto;
+    }
+
+
+    .cursoCard {
+        padding: 30px 20px;
+    }
+
+
+    .cursoCard h2 {
+        font-size: 1.2rem;
+    }
+
+
+    .cartillasEspeciales {
+        padding: 40px 5%;
+    }
+
+
+    .encabezadoSeccion .tituloSeccion {
+        font-size: 1.5rem;
+    }
+
+
+    .cartillaCard i {
+        font-size: 3.5rem;
+    }
+
+
+    footer {
+        padding: 35px 5%;
+    }
+
+}
+
     </style>
 </head>
 
