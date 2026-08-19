@@ -357,26 +357,22 @@
             }
 
             /* MENÚ */
+nav{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:white;
+        box-shadow:0 10px 25px rgba(0,0,0,.10);
+        display:none;
+    }
 
-            header nav {
-                position: absolute;
+    nav.menuAbierto{
+        display:block;
+    }
+           
 
-                top: 70px;
-                left: 0;
-
-                width: 100%;
-
-                background: white;
-
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
-
-                display: none;
-            }
-
-            header nav.menuAbierto {
-                display: block;
-            }
-
+           
             .menu {
                 flex-direction: column;
 
@@ -421,8 +417,6 @@
             }
 
         }
-
-
 
         .contenedorGrafico {
             max-width: 1100px;
