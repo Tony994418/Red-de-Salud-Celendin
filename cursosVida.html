@@ -296,60 +296,167 @@
         }
 
         /* RESPONSIVE */
-
+        /* RESPONSIVE */
         @media(max-width:768px) {
 
+            /* =========================
+       HEADER EN CELULAR
+    ========================= */
+
             header {
-                flex-direction: column;
-                gap: 15px;
+                height: 70px;
+
+                flex-direction: row;
+
+                padding: 8px 5%;
+
+                gap: 10px;
             }
 
-            .menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .heroCursos h1 {
-                font-size: 2.5rem;
+            .logo {
+                height: 48px;
+                width: auto;
+                object-fit: contain;
             }
 
             .TituloPequeno {
-                text-align: center;
-                margin-left: 0;
+                font-size: .95rem;
+
+                margin-left: 5px;
+
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
+
+            /* BOTÓN HAMBURGUESA */
+
+            .menuToggle {
+                display: block;
+
+                margin-left: auto;
+
+                flex-shrink: 0;
+
+                border: none;
+                background: none;
+
+                font-size: 2rem;
+
+                color: #0f4c81;
+
+                cursor: pointer;
+            }
+
+            /* MENÚ */
+
+            header nav {
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
+
+                display: none;
+            }
+
+            header nav.menuAbierto {
+                display: block;
+            }
+
+            .menu {
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 10px 0;
+            }
+
+            .menu li {
+                width: 100%;
+            }
+
+            .menu a {
+                display: block;
+
+                width: 100%;
+
+                text-align: center;
+
+                padding: 13px 20px;
+
+                font-size: .95rem;
+            }
+
+            .menu a:hover {
+                background: #f0fdf4;
+            }
+
+
+            /* =========================
+       RESTO DE LA PÁGINA
+    ========================= */
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide img {
+                height: 300px;
+            }
+
         }
 
-        .encabezadoSeccion{
-    position:relative;
-    margin-bottom:40px;
-    text-align:center;
-}
+        .menuToggle {
+            display: none;
 
-.encabezadoSeccion .titulo{
-    margin:0;
-    text-align:center;
-}
+            border: none;
+            background: none;
 
-.fechaActualizacion{
-    text-align:right;
-    color:#64748b;
-    font-size:.82rem;
-    margin-bottom:8px;
-}
+            font-size: 2rem;
+            color: #0f4c81;
 
-.fechaActualizacion strong{
-    color:#0f4c81;
-    font-weight:600;
-}
+            cursor: pointer;
+        }
 
-@media(max-width:768px){
+        .encabezadoSeccion {
+            position: relative;
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-    .fechaActualizacion{
-        text-align:center;
-        margin-bottom:10px;
-    }
+        .encabezadoSeccion .titulo {
+            margin: 0;
+            text-align: center;
+        }
 
-}
+        .fechaActualizacion {
+            text-align: right;
+            color: #64748b;
+            font-size: .82rem;
+            margin-bottom: 8px;
+        }
+
+        .fechaActualizacion strong {
+            color: #0f4c81;
+            font-weight: 600;
+        }
+
+        @media(max-width:768px) {
+
+            .fechaActualizacion {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+        }
     </style>
 </head>
 
@@ -364,6 +471,9 @@
         <div class="TituloPequeno">
             Red de Salud Celendín
         </div>
+        <button class="menuToggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </button>
 
         <nav>
             <ul class="menu">
@@ -438,16 +548,16 @@
 
         <div class="encabezadoSeccion">
 
-    <div class="fechaActualizacion">
-        Fecha de última actualización:
-        <strong>05/08/2026</strong>
-    </div>
+            <div class="fechaActualizacion">
+                Fecha de última actualización:
+                <strong>05/08/2026</strong>
+            </div>
 
-     <h2 class="tituloSeccion">
-            Cartillas Complementarias
-        </h2>
+            <h2 class="tituloSeccion">
+                Cartillas Complementarias
+            </h2>
 
-</div>
+        </div>
 
 
         <p class="subtituloSeccion">
@@ -554,7 +664,21 @@
         </div>
 
     </footer>
+    <script>
 
+        const menuToggle =
+            document.getElementById('menuToggle');
+
+        const nav =
+            document.querySelector('header nav');
+
+        menuToggle.addEventListener('click', function () {
+
+            nav.classList.toggle('menuAbierto');
+
+        });
+
+    </script>
 </body>
 
 </html>

@@ -95,11 +95,9 @@
             height: 60vh;
 
             background:
-linear-gradient(
-rgba(124,58,237,.85),
-rgba(168,85,247,.75)
-),
-url("Imagenes/adolescente.jpg");
+                linear-gradient(rgba(124, 58, 237, .85),
+                    rgba(168, 85, 247, .75)),
+                url("Imagenes/adolescente.jpg");
 
             background-size: cover;
             background-position: center;
@@ -173,7 +171,7 @@ url("Imagenes/adolescente.jpg");
 
         .indicador h3 {
             font-size: 3rem;
-            color: rgba(168,85,247,.75);
+            color: rgba(168, 85, 247, .75);
         }
 
         .indicador p {
@@ -216,7 +214,7 @@ url("Imagenes/adolescente.jpg");
         }
 
         .microItem span:last-child {
-            color: rgba(168,85,247,.75);
+            color: rgba(168, 85, 247, .75);
             font-size: 1.4rem;
             font-weight: 700;
         }
@@ -226,19 +224,18 @@ url("Imagenes/adolescente.jpg");
 
         /* CARTILLA */
 
-       .cartilla{
-    background:linear-gradient(
-    135deg,
-    #eef7ff,
-    #f0fdf4
-    );
-    text-align:center;
-}
+        .cartilla {
+            background: linear-gradient(135deg,
+                    #eef7ff,
+                    #f0fdf4);
+            text-align: center;
+        }
+
         .btnDescargar {
             display: inline-block;
             margin-top: 20px;
             padding: 15px 30px;
-            background: rgba(168,85,247,.75);
+            background: rgba(168, 85, 247, .75);
             color: white;
             border-radius: 10px;
             font-weight: 600;
@@ -262,7 +259,7 @@ url("Imagenes/adolescente.jpg");
         /* FOOTER */
 
         footer {
-            background: rgba(168,85,247,.75);
+            background: rgba(168, 85, 247, .75);
             color: #cbd5e1;
             padding: 60px 8% 20px;
         }
@@ -295,125 +292,138 @@ url("Imagenes/adolescente.jpg");
 
         /* RESPONSIVE */
 
-       @media(max-width:768px) {
+        @media(max-width:768px) {
 
-    /* =========================
+            /* =========================
        HEADER EN CELULAR
     ========================= */
 
-    header {
-        height: 70px;
+            header {
+                height: 70px;
 
-        flex-direction: row;
+                flex-direction: row;
 
-        padding: 8px 5%;
+                padding: 8px 5%;
 
-        gap: 10px;
-    }
+                gap: 10px;
+            }
 
-    .logo {
-        height: 48px;
-        width: auto;
-        object-fit: contain;
-    }
+            .logo {
+                height: 48px;
+                width: auto;
+                object-fit: contain;
+            }
 
-    .TituloPequeno {
-        font-size: .95rem;
+            .TituloPequeno {
+                font-size: .95rem;
 
-        margin-left: 5px;
+                margin-left: 5px;
 
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
 
-    /* BOTÓN HAMBURGUESA */
+            /* BOTÓN HAMBURGUESA */
+            .menuToggle {
+                display: none;
 
-    .menuToggle {
-        display: block;
+                border: none;
+                background: none;
 
-        margin-left: auto;
+                font-size: 2rem;
+                color: #0f4c81;
 
-        flex-shrink: 0;
-
-        border: none;
-        background: none;
-
-        font-size: 2rem;
-
-        color: #0f4c81;
-
-        cursor: pointer;
-    }
-
-    /* MENÚ */
-
-    header nav {
-        position: absolute;
-
-        top: 70px;
-        left: 0;
-
-        width: 100%;
-
-        background: white;
-
-        box-shadow: 0 10px 25px rgba(0,0,0,.10);
-
-        display: none;
-    }
-
-    header nav.menuAbierto {
-        display: block;
-    }
-
-    .menu {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-
-        padding: 10px 0;
-    }
-
-    .menu li {
-        width: 100%;
-    }
-
-    .menu a {
-        display: block;
-
-        width: 100%;
-
-        text-align: center;
-
-        padding: 13px 20px;
-
-        font-size: .95rem;
-    }
-
-    .menu a:hover {
-        background: #f0fdf4;
-    }
+                cursor: pointer;
+            }
 
 
-    /* =========================
+
+            .menuToggle {
+                display: block;
+
+                margin-left: auto;
+
+                flex-shrink: 0;
+
+                border: none;
+                background: none;
+
+                font-size: 2rem;
+
+                color: #0f4c81;
+
+                cursor: pointer;
+            }
+
+            /* MENÚ */
+
+            header nav {
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+
+                width: 100%;
+
+                background: white;
+
+                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
+
+                display: none;
+            }
+
+            header nav.menuAbierto {
+                display: block;
+            }
+
+            .menu {
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 10px 0;
+            }
+
+            .menu li {
+                width: 100%;
+            }
+
+            .menu a {
+                display: block;
+
+                width: 100%;
+
+                text-align: center;
+
+                padding: 13px 20px;
+
+                font-size: .95rem;
+            }
+
+            .menu a:hover {
+                background: #f0fdf4;
+            }
+
+
+            /* =========================
        RESTO DE LA PÁGINA
     ========================= */
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-    .slide img {
-        height: 300px;
-    }
+            .slide img {
+                height: 300px;
+            }
 
-}
+        }
 
 
-    
+
         .contenedorGrafico {
             max-width: 1100px;
             margin: auto;
@@ -422,54 +432,51 @@ url("Imagenes/adolescente.jpg");
             border-radius: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
         }
-        .encabezadoSeccion{
-    position:relative;
-    margin-bottom:40px;
-    text-align:center;
-}
 
-.encabezadoSeccion .titulo{
-    margin:0;
-    text-align:center;
-}
+        .encabezadoSeccion {
+            position: relative;
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-.fechaActualizacion{
-    text-align:right;
-    color:#64748b;
-    font-size:.82rem;
-    margin-bottom:8px;
-}
+        .encabezadoSeccion .titulo {
+            margin: 0;
+            text-align: center;
+        }
 
-.fechaActualizacion strong{
-    color:#0f4c81;
-    font-weight:600;
-}
+        .fechaActualizacion {
+            text-align: right;
+            color: #64748b;
+            font-size: .82rem;
+            margin-bottom: 8px;
+        }
 
-@media(max-width:768px){
+        .fechaActualizacion strong {
+            color: #0f4c81;
+            font-weight: 600;
+        }
 
-    .fechaActualizacion{
-        text-align:center;
-        margin-bottom:10px;
-    }
+        @media(max-width:768px) {
 
-}
+            .fechaActualizacion {
+                text-align: center;
+                margin-bottom: 10px;
+            }
 
-   /* Menu Toggle */
-        .menuToggle{
-    display:none;
+        }
 
-    border:none;
-    background:none;
+        /* Menu Toggle */
+        .menuToggle {
+            display: none;
 
-    font-size:2rem;
-    color:#0f4c81;
+            border: none;
+            background: none;
 
-    cursor:pointer;
-}
+            font-size: 2rem;
+            color: #0f4c81;
 
-
-
-
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -482,10 +489,10 @@ url("Imagenes/adolescente.jpg");
             <img src="Imagenes/logo.jpg" class="logo">
         </a>
 
-         <div class="TituloPequeno">Red de Salud Celendín</div>
-<button class="menuToggle" id="menuToggle">
-    <i class='bx bx-menu'></i>
-</button>
+        <div class="TituloPequeno">Red de Salud Celendín</div>
+        <button class="menuToggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </button>
 
         <nav>
             <ul class="menu">
@@ -513,15 +520,15 @@ url("Imagenes/adolescente.jpg");
 
         <div class="encabezadoSeccion">
 
-    <div class="fechaActualizacion">
-        Fecha de última actualización:
-        <strong>10/08/2026</strong>
-    </div>
+            <div class="fechaActualizacion">
+                Fecha de última actualización:
+                <strong>10/08/2026</strong>
+            </div>
 
-  <h2 class="titulo">Indicadores del Curso de Vida Adolescente</h2>
+            <h2 class="titulo">Indicadores del Curso de Vida Adolescente</h2>
 
-</div>
-       
+        </div>
+
 
         <p class="subtitulo">
             Información consolidada de todas las microredes.
@@ -554,9 +561,9 @@ url("Imagenes/adolescente.jpg");
     </section>
     <section class="microredes">
 
-       <h2 class="titulo">
-    Adolescentes por Microred
-</h2>
+        <h2 class="titulo">
+            Adolescentes por Microred
+        </h2>
 
         <p class="subtitulo">
             Distribución referencial de Adolescentes registrados
@@ -617,17 +624,17 @@ url("Imagenes/adolescente.jpg");
 
         <div class="encabezadoSeccion">
 
-    <div class="fechaActualizacion">
-        Fecha de última actualización:
-        <strong>05/08/2026</strong>
-    </div>
+            <div class="fechaActualizacion">
+                Fecha de última actualización:
+                <strong>05/08/2026</strong>
+            </div>
 
-   <h2 class="titulo">
-            Cartilla Adolescente
-        </h2>
+            <h2 class="titulo">
+                Cartilla Adolescente
+            </h2>
 
-</div>
-        
+        </div>
+
 
         <a href="ADOLECENTE/CARTILLA HIS 1 EVA 12 A 14 AÑOS-ACTUAL.xls" download class="btnDescargar">
 
@@ -635,31 +642,32 @@ url("Imagenes/adolescente.jpg");
             CARTILLA HIS 1 EVA - 12 A 14 AÑOS ACTUAL
 
         </a>
-         <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 1 EVA.xls" download class="btnDescargar">
+        <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 1 EVA.xls" download class="btnDescargar">
 
             <i class="fa fa-download"></i>
             CARTILLA HIS DE 12 A 17 AÑOS - 1 EVA
 
         </a>
-         <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 2 EVA.xls" download class="btnDescargar">
+        <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 2 EVA.xls" download class="btnDescargar">
 
             <i class="fa fa-download"></i>
             CARTILLA HIS DE 12 A 17 AÑOS - 2 EVA
 
         </a>
-         <a href="ADOLECENTE/CARTILLA HIS SALUD BUCAL, ADOLESCENTE, JOVEN, ADULTO Y ADULTO MAYOR.jpeg" download class="btnDescargar">
+        <a href="ADOLECENTE/CARTILLA HIS SALUD BUCAL, ADOLESCENTE, JOVEN, ADULTO Y ADULTO MAYOR.jpeg" download
+            class="btnDescargar">
 
             <i class="fa fa-download"></i>
             CARTILLA HIS - SALUD BUCAL
 
         </a>
-         <a href="ADOLECENTE/Copia de CARTILLA HIS DE 15 A 17 AÑOS.xls" download class="btnDescargar">
+        <a href="ADOLECENTE/Copia de CARTILLA HIS DE 15 A 17 AÑOS.xls" download class="btnDescargar">
 
             <i class="fa fa-download"></i>
             CARTILLA HIS - 15 A 17 AÑOS
 
         </a>
-         <a href="ADOLECENTE/HIS TA + DOSAJE CONTROL 12 A 17 AÑOS.xls" download class="btnDescargar">
+        <a href="ADOLECENTE/HIS TA + DOSAJE CONTROL 12 A 17 AÑOS.xls" download class="btnDescargar">
 
             <i class="fa fa-download"></i>
             CARTILLA HIS TA + DOSAJE CONTROL DE 12 A 17 AÑOS
@@ -736,21 +744,21 @@ url("Imagenes/adolescente.jpg");
 
     </footer>
 
-        <script>
+    <script>
 
-const menuToggle =
-document.getElementById('menuToggle');
+        const menuToggle =
+            document.getElementById('menuToggle');
 
-const nav =
-document.querySelector('header nav');
+        const nav =
+            document.querySelector('header nav');
 
-menuToggle.addEventListener('click', function(){
+        menuToggle.addEventListener('click', function () {
 
-    nav.classList.toggle('menuAbierto');
+            nav.classList.toggle('menuAbierto');
 
-});
+        });
 
-</script>
+    </script>
 
 
     <script>
