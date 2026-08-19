@@ -291,7 +291,7 @@
         }
 
 
-         /* Menu Toggle */
+        /* Menu Toggle */
         .menuToggle {
             display: none;
 
@@ -303,6 +303,7 @@
 
             cursor: pointer;
         }
+
         /* RESPONSIVE */
 
         @media(max-width:768px) {
@@ -337,7 +338,7 @@
                 text-overflow: ellipsis;
             }
 
-        
+
 
             .menuToggle {
                 display: block;
@@ -357,29 +358,24 @@
             }
 
             /* MENÚ */
-nav{
-        position:absolute;
-        top:70px;
-        left:0;
-        width:100%;
-        background:white;
-        box-shadow:0 10px 25px rgba(0,0,0,.10);
-        display:none;
-    }
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
+                display: none;
+            }
 
-    nav.menuAbierto{
-        display:block;
-    }
-           
+            nav.menuAbierto {
+                display: block;
+            }
 
-           
             .menu {
                 flex-direction: column;
-
                 align-items: stretch;
-
                 gap: 0;
-
                 padding: 10px 0;
             }
 
@@ -389,24 +385,15 @@ nav{
 
             .menu a {
                 display: block;
-
                 width: 100%;
-
                 text-align: center;
-
                 padding: 13px 20px;
-
                 font-size: .95rem;
             }
 
             .menu a:hover {
                 background: #f0fdf4;
             }
-
-
-            /* =========================
-       RESTO DE LA PÁGINA
-    ========================= */
 
             .hero h1 {
                 font-size: 2.5rem;
@@ -417,6 +404,9 @@ nav{
             }
 
         }
+
+
+        
 
         .contenedorGrafico {
             max-width: 1100px;
@@ -458,8 +448,6 @@ nav{
             }
 
         }
-
-       
     </style>
 </head>
 
@@ -782,7 +770,7 @@ nav{
         });
     </script>
 
-<script>
+    <script>
 
         const menuToggle =
             document.getElementById('menuToggle');
