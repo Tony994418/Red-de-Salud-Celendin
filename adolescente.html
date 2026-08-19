@@ -356,6 +356,23 @@ url("Imagenes/adolescente.jpg");
     }
 
 }
+
+   /* Menu Toggle */
+        .menuToggle{
+    display:none;
+
+    border:none;
+    background:none;
+
+    font-size:2rem;
+    color:#0f4c81;
+
+    cursor:pointer;
+}
+
+
+
+
     </style>
 </head>
 
@@ -368,9 +385,10 @@ url("Imagenes/adolescente.jpg");
             <img src="Imagenes/logo.jpg" class="logo">
         </a>
 
-        <div class="TituloPequeno">
-            Red de Salud Celendín
-        </div>
+         <div class="TituloPequeno">Red de Salud Celendín</div>
+<button class="menuToggle" id="menuToggle">
+    <i class='bx bx-menu'></i>
+</button>
 
         <nav>
             <ul class="menu">
@@ -621,6 +639,21 @@ url("Imagenes/adolescente.jpg");
 
     </footer>
 
+        <script>
+
+const menuToggle =
+document.getElementById('menuToggle');
+
+const nav =
+document.querySelector('header nav');
+
+menuToggle.addEventListener('click', function(){
+
+    nav.classList.toggle('menuAbierto');
+
+});
+
+</script>
 
 
     <script>
