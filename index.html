@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red de Salud Celendín</title>
+
+    <link rel="icon" href="Imagenes/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f8fafc;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 6%;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .TituloPequeno {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f4c81;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #1e3a8a;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu .activo {
+            color: #16a34a;
+        }
+
+        .menu .fa {
+            font-size: 1.2rem;
+        }
+
+        /* HERO */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 8% 80px;
+            color: white;
+            background:
+                linear-gradient(rgba(15, 76, 129, 0.75), rgba(22, 163, 74, 0.65)),
+                url('Imagenes/Portada11.jpg') center/cover no-repeat;
+        }
+
+        #hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        #hero p {
+            max-width: 900px;
+            font-size: 1.15rem;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 90px 8%;
+        }
+
+        .tituloSeccion {
+            text-align: center;
+            font-size: 2.4rem;
+            color: #0f4c81;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtituloSeccion {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #64748b;
+        }
+
+        /* BIENVENIDA */
+        .bienvenida {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .bienvenida h2 {
+            font-size: 2.2rem;
+            color: #0f4c81;
+            margin-bottom: 20px;
+        }
+
+        .bienvenida p {
+            text-align: justify;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+
+        .bienvenida img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* MISION Y VISION */
+        .misionVision {
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+        }
+
+        .cards2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .cardInfo {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .cardInfo h3 {
+            color: #0f4c81;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        /* TARJETAS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card h3 {
+            min-height: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .card i {
+            font-size: 3.5rem;
+            color: #16a34a;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #0f4c81;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* ESTADISTICAS */
+        .estadisticas {
+            background: #0f4c81;
+            color: white;
+        }
+
+        .estadisticas .tituloSeccion,
+        .estadisticas .subtituloSeccion {
+            color: white;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .stat h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* AUTORIDADES */
+        .autoridad img {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid #e2e8f0;
+        }
+
+        /* DIRECTOR PRINCIPAL */
+
+        .directorPrincipal {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .principal {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .principal img {
+            width: 260px;
+            height: 260px;
+        }
+
+        .principal h3 {
+            font-size: 1.6rem;
+        }
+
+        /* AUTORIDADES SECUNDARIAS */
+
+        .gridAutoridades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+
+        .directorPrincipal {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .directorPrincipal::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 50px;
+            background: #16a34a;
+            bottom: -55px;
+            border-radius: 10px;
+        }
+
+
+        /* ================================
+   POI INSTITUCIONAL
+================================ */
+
+        .poiInstitucional {
+            padding: 70px 8%;
+            background: linear-gradient(135deg,
+                    #eff6ff,
+                    #f0fdf4);
+        }
+
+        .poiContenido {
+            max-width: 1100px;
+            margin: auto;
+
+            background: white;
+
+            border-radius: 28px;
+
+            padding: 45px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 35px;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, .08);
+
+            border: 1px solid #e2e8f0;
+        }
+
+        .poiIcono {
+            min-width: 95px;
+            width: 95px;
+            height: 95px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fee2e2;
+
+            border-radius: 22px;
+
+            color: #dc2626;
+
+            font-size: 4rem;
+        }
+
+        .poiTexto {
+            flex: 1;
+        }
+
+        .poiEtiqueta {
+            display: inline-block;
+
+            font-size: .75rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            color: #16a34a;
+
+            margin-bottom: 8px;
+        }
+
+        .poiTexto h2 {
+            color: #0f4c81;
+
+            font-size: 2rem;
+
+            margin-bottom: 12px;
+        }
+
+        .poiTexto p {
+            color: #64748b;
+
+            max-width: 650px;
+
+            margin-bottom: 25px;
+        }
+
+        .btnPOI {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            background: #0f4c81;
+
+            color: white;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            font-weight: 600;
+
+            transition: .3s;
+
+            box-shadow:
+                0 8px 20px rgba(15, 76, 129, .20);
+        }
+
+        .btnPOI:hover {
+            background: #16a34a;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px rgba(22, 163, 74, .25);
+        }
+
+        .btnPOI i {
+            font-size: 1.3rem;
+        }
+
+        .poiDecoracion {
+            position: absolute;
+
+            right: -35px;
+            bottom: -45px;
+
+            font-size: 12rem;
+
+            color: #f8fafc;
+
+            transform: rotate(-10deg);
+
+            pointer-events: none;
+        }
+
+        @media(max-width:768px) {
+
+            .poiContenido {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding: 35px 25px;
+            }
+
+            .poiTexto p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .poiDecoracion {
+                display: none;
+            }
+
+        }
+
+
+
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 60px 8% 30px;
+        }
+
+        .footerGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #cbd5e1;
+        }
+
+        footer a:hover {
+            color: #4ade80;
+        }
+
+        .social a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+
+            .TituloPequeno {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .bienvenida {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            #hero {
+                padding-top: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="Imagenes/logo.jpg" alt="Logo" class="logo">
+        </a>
+
+        <div class="TituloPequeno">Red de Salud Celendín</div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="activo">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="cursosVida.html">Cursos de Vida</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Login.html">Iniciar Sesión</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a></li>
+                <li><a href="https://wa.me/51930384753" target="_blank" class="fa fa-whatsapp"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Red de Salud Celendín</h1>
+        <p>
+            Institución responsable de planificar, coordinar, supervisar y fortalecer los servicios de salud
+            en toda la provincia de Celendín, garantizando una gestión eficiente, transparente y orientada
+            al bienestar de la población.
+        </p>
+    </section>
+
+    <section>
+        <div class="bienvenida">
+            <div>
+                <h2>Bienvenidos a nuestro portal institucional</h2>
+                <p>
+                    La Red Integrada de Salud Celendín articula y gestiona los establecimientos de salud
+                    de la provincia, promoviendo estrategias sanitarias, acciones de prevención,
+                    fortalecimiento del talento humano y mejora continua de los servicios.
+                    <br><br>
+                    En este portal encontrarás noticias, documentos institucionales, estadísticas,
+                    campañas y toda la información relevante para la ciudadanía y el personal de salud.
+                </p>
+            </div>
+            <div>
+                <img src="Imagenes/FOTO INSTITUCIONAL.JPG" alt="Red Integrada de Salud Celendín">
+            </div>
+        </div>
+    </section>
+
+    <section class="misionVision">
+        <h2 class="tituloSeccion">Nuestra Misión y Visión</h2>
+        <div class="cards2">
+            <div class="cardInfo">
+                <h3>Misión</h3>
+                <p>
+                    LA RED DE SALUD CELENDİN ES UN ÓRGANO DESCENTRALIZADO DE LA DIRESA CAJAMARCA QUE TIENE COMO
+                    FINALIDAD PROPORCIONAR SOPORTE TÉCNICO ADMINISTRATIVO
+                    A LAS MICRORREDES E INSTITUCIONES PRESTADORAS DE SERVICIOS DE SALUD PARA BRINDAR EL CUIDADO INTEGRAL
+                    AL INDIVIDUO EN SUS DIFERENTES CURSOS DE VIDA, FAMILIA Y COMUNIDAD
+                    CON UN ENFOQUE DE PROMOCIÓN DE LA SALUD E INTERCULTURALIDAD DE MANERA OPORTUNA Y ADECUADA.
+
+                </p>
+            </div>
+            <div class="cardInfo">
+                <h3>Visión</h3>
+                <p>
+                    SER RECONOCIDA COMO UNA RED INTEGRADA DE SALUD Y UNA UNIDAD EJECUTORA DE SALUD FUNCIONAL, CON UN
+                    EQUIPO TÉCNICO
+                    MULTIDISCIPLINARIO, ADMINISTRATIVO Y ASISTENCIAL COMPROMETIDO EN GARANTIZAR LOS SERVICIOS DE SALUD
+                    CON CALIDAD,
+                    EFICIENCIA Y CALIDEZ BASADO EN EL MODELO DE CUIDADO INTEGRAL DE SALUD EN ATENCIÓN A LA PERSONA POR
+                    CURSO DE VIDA, LA FAMILIA Y COMUNIDAD.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="tituloSeccion">Unidades Orgánicas</h2>
+        <p class="subtituloSeccion">
+            Áreas estratégicas responsables de la gestión y fortalecimiento del sistema de salud.
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <i class='bx bxs-briefcase-alt-2'></i>
+                <h3>Dirección</h3>
+                <p>Conduce y dirige la gestión institucional de la Red de Salud Celendín.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-user-account'></i>
+                <h3>Recursos Humanos</h3>
+                <p>Gestiona el talento humano y el desarrollo del personal.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-bar-chart-alt-2'></i>
+                <h3>Planeamiento</h3>
+                <p>Formula planes, metas institucionales y presupuesto.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-building-house'></i>
+                <h3>Administración</h3>
+                <p>Gestiona recursos financieros, logísticos y patrimoniales.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bx-plus-medical'></i>
+                <h3>Atención Integral de Salud</h3>
+                <p>Supervisa las estrategias y cursos de vida en la Red.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-data'></i>
+                <h3>OITE</h3>
+                <p>Gestiona tecnologías de información y estadísticas sanitarias.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-virus'></i>
+                <h3>Epidemiología</h3>
+                <p>Realiza vigilancia epidemiológica y análisis de riesgos.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bx-clinic'></i>
+                <h3>Servicios de Salud</h3>
+                <p>Fortalece la organización y calidad de los servicios asistenciales.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-shield-plus'></i>
+                <h3>Unidad de Seguros</h3>
+                <p>Administra la cobertura y afiliación de aseguramiento en salud.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-megaphone'></i>
+                <h3>Promoción de la Salud</h3>
+                <p>Impulsa estilos de vida saludables y participación comunitaria.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-leaf'></i>
+                <h3>Salud Ambiental</h3>
+                <p>Vigila factores ambientales que impactan en la salud pública.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-capsule'></i>
+                <h3>SISMED</h3>
+                <p>Gestiona el suministro y control de medicamentos e insumos.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-ambulance'></i>
+                <h3>Emergencias y Desastres</h3>
+                <p>Coordina la respuesta ante emergencias, urgencias y desastres.</p>
+            </div>
+
+            <div class="card">
+                <i class='bx bxs-flask'></i>
+                <h3>Laboratorio</h3>
+                <p>Realiza procesamiento y análisis de muestras para apoyo diagnóstico.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="estadisticas">
+        <h2 class="tituloSeccion">Indicadores Institucionales</h2>
+        <p class="subtituloSeccion">Datos referenciales que pueden actualizarse con información oficial.</p>
+
+        <div class="grid">
+            <div class="stat">
+                <h3>50</h3>
+                <p>Establecimientos de Salud</p>
+            </div>
+            <div class="stat">
+                <h3>8</h3>
+                <p>MICROREDES</p>
+            </div>
+            <div class="stat">
+                <h3>200+</h3>
+                <p>Trabajadores del Sector Salud</p>
+            </div>
+            <div class="stat">
+                <h3>95%</h3>
+                <p>Cobertura de Vacunación</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <h2 class="tituloSeccion">Autoridades</h2>
+
+        <p class="subtituloSeccion">
+            Equipo directivo comprometido con la gestión institucional.
+        </p>
+
+        <!-- DIRECTOR -->
+        <div class="directorPrincipal">
+
+            <div class="card autoridad principal">
+
+                <img src="Imagenes/directora.png" alt="Director Ejecutivo">
+
+                <h3>Directora de la Red de Salud Celendín</h3>
+                <h4>Lic. Enf. Melchora Julca Rojas</h4>
+                <p>
+                    Máxima autoridad institucional responsable de la conducción,
+                    planificación y supervisión de la Red Integrada de Salud Celendín.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- DEMÁS AUTORIDADES -->
+        <div class="gridAutoridades">
+
+            <div class="card autoridad">
+                <img src="Imagenes/Yarita.jpg" alt="Administrador">
+
+                <h3>Recursos Humanos</h3>
+                <h4>Lic. Psic. Yharita Catalina Huamán Cosme</h4>
+
+                <p>
+                    Gestiona los procesos relacionados con el personal de salud y coordina la incorporación,
+                    asignación y seguimiento de los profesionales SERUMS en los establecimientos de salud.
+                </p>
+            </div>
+
+            <div class="card autoridad">
+                <img src="Imagenes/LUIS LLANOS.jpeg" alt="Recursos Humanos">
+
+                <h3>Planeamiento</h3>
+                <h4>C.P.C Luis Oscar Llanos Mosqueria</h4>
+
+                <p>
+                    Gestiona la planificación institucional, el seguimiento de metas y recursos, así como la
+                    adquisición, distribución y control de bienes y servicios necesarios para el funcionamiento de la
+                    institución.
+                </p>
+            </div>
+
+            <div class="card autoridad">
+                <img src="Imagenes/SOLEDAD.JPG" alt="OITE">
+
+                <h3>Administración</h3>
+                <h4>C.P.C HILDA SOLEDAD TAMAYO RODRIGUEZ</h4>
+
+                <p>
+                    Gestiona y coordina los procesos administrativos, asegurando el uso eficiente de los recursos y el
+                    adecuado funcionamiento de la institución.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="poiInstitucional">
+
+        <div class="poiContenido">
+
+            <div class="poiIcono">
+                <i class='bx bxs-file-pdf'></i>
+            </div>
+
+            <div class="poiTexto">
+
+                <span class="poiEtiqueta">
+                    DOCUMENTO INSTITUCIONAL
+                </span>
+
+                <h2>
+                    Plan Operativo Institucional
+                </h2>
+
+                <p>
+                    Consulta y descarga el Plan Operativo Institucional
+                    de la Red Integrada de Salud Celendín.
+                </p>
+
+                <a href="DOCUMENTOS/PLAN OPERATIVO INSTITUCIONAL 2026.pdf" download class="btnPOI">
+
+                    <i class='bx bx-download'></i>
+                    Descargar POI Institucional
+
+                </a>
+
+            </div>
+
+            <div class="poiDecoracion">
+                <i class='bx bxs-file-pdf'></i>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <div class="footerGrid">
+            <div>
+                <h3>Red Integrada de Salud Celendín</h3>
+                <p>
+                    Institución encargada de la gestión y articulación de los servicios de salud
+                    en toda la provincia de Celendín.
+                </p>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <p><i class="fa fa-envelope"></i> redsaludcelendin@gmail.com</p>
+                <p><i class="fa fa-map-marker"></i> Celendín, Cajamarca, Perú</p>
+                <p><i class="fa fa-phone"></i> +51 930 384 753</p>
+            </div>
+
+            <div>
+                <h3>Síguenos</h3>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                    <a href="https://wa.me/51930384753" target="_blank" class="fa fa-whatsapp"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 Red Integrada de Salud Celendín. Todos los derechos reservados. Desarrollado por Tony.
+        </div>
+    </footer>
+
+</body>
+
+</html>

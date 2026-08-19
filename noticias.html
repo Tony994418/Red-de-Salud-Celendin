@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Campañas - Red Integrada de Salud Celendín</title>
+
+    <link rel="icon" href="Imagenes/logo-png.png" type="image/x-icon">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f8fc;
+            color: #1e293b;
+        }
+
+        /* ================= HEADER ================= */
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 6%;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .TituloPequeno {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f4c81;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #1e3a8a;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu .activo {
+            color: #16a34a;
+        }
+
+        .menu .fa {
+            font-size: 1.2rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 80px 8%;
+            text-align: center;
+            background: linear-gradient(180deg, #eaf4ff, #f5f8fc);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            color: #0f4c81;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.8;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+
+        /* ================= BUSCADOR ================= */
+
+        .filtros {
+            width: min(1200px, 92%);
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .filtros input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            border: 1px solid #dbe2ea;
+            border-radius: 50px;
+            outline: none;
+            font-family: inherit;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(15, 76, 129, 0.05);
+        }
+
+        .filtros input:focus {
+            border-color: #0f4c81;
+        }
+
+        /* ================= SECCIONES ================= */
+
+        .section {
+            width: min(1200px, 92%);
+            margin: 70px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #0f4c81;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto 45px;
+            line-height: 1.7;
+        }
+
+        /* ================= GRID ================= */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* ================= TARJETAS ================= */
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(15, 76, 129, 0.08);
+            transition: 0.35s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(15, 76, 129, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #0f4c81;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0f4c81, #16a34a);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(15, 76, 129, 0.15);
+        }
+
+        /* ================= CARRUSEL ================= */
+
+        .campañasSwiper {
+            width: 100%;
+            padding: 40px 0 70px;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            max-width: 450px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.35s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .swiper-slide img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ================= FLECHAS ================= */
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #0f4c81;
+        }
+
+        /* ================= PAGINACIÓN ================= */
+
+        .swiper-pagination-bullet {
+            background: #0f4c81;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #16a34a;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #334155;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close:hover {
+            color: red;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 70px;
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* ================= ANIMACIÓN ================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px) {
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .logo-container h1 {
+                font-size: 1rem;
+            }
+
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .swiper-slide img {
+                height: 450px;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <a href="index.html">
+            <img src="Imagenes/logo.jpg" alt="Logo" class="logo">
+        </a>
+
+        <div class="TituloPequeno">Red de Salud Celendín</div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="noticias.html" class="activo">Noticias</a></li>
+                <li><a href="cursosVida.html">Cursos de Vida</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+        <br>
+        <br>
+        <br>
+        <h2>Noticias y Comunicados</h2>
+
+        <p>
+            Mantente informado sobre las actividades,
+            campañas de salud, comunicados oficiales
+            y eventos institucionales de la Red Integrada
+            de Salud Celendín.
+        </p>
+
+    </section>
+
+    <!-- ================= BUSCADOR ================= -->
+
+    <section class="filtros">
+
+        <input type="text" id="buscador" placeholder="Buscar noticias o campañas...">
+
+    </section>
+
+    <!-- ================= NOTICIAS ================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">Últimas Noticias</h2>
+
+        <p class="section-subtitle">
+            Conoce los comunicados oficiales y actividades
+            destacadas realizadas por nuestra institución.
+        </p>
+
+        <div class="grid" id="noticiasGrid">
+
+        
+            <!-- NOTICIA 1 -->
+
+            <article class="card">
+
+                <img src="Imagenes/FOTO INSTITUCIONAL.JPG" alt="">
+
+                <div class="card-content">
+
+                    <span class="badge">Capacitación</span>
+
+                    <h3>Participación de la Marcha - 28 de Julio</h3>
+
+                    <p>
+                        La Red de Salud Celendín, como todos los años, participó de la marcha por la Independencia del Perú, reafirmando su compromiso con la identidad nacional.
+                    </p>
+
+                    <button class="btn abrir-modal" data-title="Capacitación al Personal de Salud"
+                        data-content="La Red de Salud Celendín, como todos los años, participó de la marcha por la Independencia del Perú, reafirmando su compromiso con la identidad nacional y fortaleciendo los lazos de integración entre sus trabajadores y la comunidad. Esta actividad permitió destacar el espíritu patriótico, la unidad institucional y el compromiso de la Red de Salud Celendín con el bienestar y desarrollo de la población de la provincia.">
+
+                        Leer más
+
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ================= EVENTOS Y CAMPAÑAS ================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">Eventos y Campañas de Salud</h2>
+
+        <p class="section-subtitle">
+            Infórmate sobre campañas integrales,
+            actividades preventivas y jornadas médicas.
+        </p>
+
+        <div class="swiper campañasSwiper">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="Imagenes/13 de mayo.png" alt="" class="flyer-img">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="Imagenes/camapaña11agosto.jpg" alt="" class="flyer-img">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="Imagenes/13 de mayo.png" alt="" class="flyer-img">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="Imagenes/18 de mayo.png" alt="" class="flyer-img">
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-content">
+
+            <span class="close" id="cerrarModal">&times;</span>
+
+            <div class="modal-body" id="modalBody"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        © 2026 Red Integrada de Salud Celendín - Todos los derechos reservados.
+    </footer>
+
+    <!-- ================= SWIPER ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= BUSCADOR ================= */
+
+        const buscador = document.getElementById('buscador');
+
+        buscador.addEventListener('keyup', function () {
+
+            const texto = this.value.toLowerCase();
+
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+
+                const contenido = card.textContent.toLowerCase();
+
+                card.style.display =
+                    contenido.includes(texto)
+                        ? 'block'
+                        : 'none';
+
+            });
+
+        });
+
+        /* ================= SWIPER ================= */
+
+        const campañasSwiper = new Swiper(".campañasSwiper", {
+
+            loop: true,
+
+            centeredSlides: true,
+
+            spaceBetween: 30,
+
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+        });
+
+        /* ================= MODAL ================= */
+
+        const modal = document.getElementById('modal');
+
+        const modalBody = document.getElementById('modalBody');
+
+        const cerrarModal = document.getElementById('cerrarModal');
+
+        /* NOTICIAS */
+
+        document.querySelectorAll('.abrir-modal').forEach(btn => {
+
+            btn.addEventListener('click', () => {
+
+                const titulo = btn.dataset.title;
+
+                const contenido = btn.dataset.content;
+
+                modalBody.innerHTML = `
+
+                    <h2 style="color:#0f4c81; margin-bottom:20px;">
+                        ${titulo}
+                    </h2>
+
+                    <p style="line-height:1.8; color:#475569;">
+                        ${contenido}
+                    </p>
+
+                `;
+
+                modal.classList.add('show');
+
+            });
+
+        });
+
+        /* FLYERS */
+
+        document.querySelectorAll('.flyer-img').forEach(img => {
+
+            img.addEventListener('click', () => {
+
+                modalBody.innerHTML = `
+                    <img src="${img.src}">
+                `;
+
+                modal.classList.add('show');
+
+            });
+
+        });
+
+        /* CERRAR */
+
+        cerrarModal.addEventListener('click', () => {
+
+            modal.classList.remove('show');
+
+        });
+
+        modal.addEventListener('click', (e) => {
+
+            if (e.target === modal) {
+
+                modal.classList.remove('show');
+
+            }
+
+        });
+
+        document.addEventListener('keydown', (e) => {
+
+            if (e.key === 'Escape') {
+
+                modal.classList.remove('show');
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Curso de Vida Adolescente</title>
+
+    <link rel="icon" href="Imagenes/logo.jpg" type="image/x-icon">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1f2937;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 6%;
+            z-index: 9999;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .TituloPequeno {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f4c81;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #1e3a8a;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .menu a:hover,
+        .menu .activo {
+            color: #16a34a;
+        }
+
+        .menu .fa {
+            font-size: 1.2rem;
+        }
+
+        /* HERO */
+
+        .hero {
+            margin-top: 84px;
+            height: 60vh;
+
+            background:
+linear-gradient(
+rgba(124,58,237,.85),
+rgba(168,85,247,.75)
+),
+url("Imagenes/adolescente.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 900px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, .12);
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        /* TITULOS */
+
+        .titulo {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0f4c81;
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            color: #64748b;
+            margin-bottom: 50px;
+        }
+
+        /* CONTENEDORES */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        /* INDICADORES */
+
+        .gridIndicadores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .indicador {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .indicador:hover {
+            transform: translateY(-10px);
+        }
+
+        .indicador h3 {
+            font-size: 3rem;
+            color: rgba(168,85,247,.75);
+        }
+
+        .indicador p {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* MICROREDES */
+
+        .microredes {
+            background: #eef7ff;
+        }
+
+        .tablaMicroredes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .microItem {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+            transition: .3s;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .microItem:hover {
+            transform: translateY(-5px);
+        }
+
+        .microItem span:first-child {
+            color: #0f4c81;
+            font-weight: 600;
+        }
+
+        .microItem span:last-child {
+            color: rgba(168,85,247,.75);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+
+
+
+        /* CARTILLA */
+
+       .cartilla{
+    background:linear-gradient(
+    135deg,
+    #eef7ff,
+    #f0fdf4
+    );
+    text-align:center;
+}
+        .btnDescargar {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: rgba(168,85,247,.75);
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btnDescargar:hover {
+            background: #0f4c81;
+        }
+
+        .imagenCartilla {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+            cursor: pointer;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: rgba(168,85,247,.75);
+            color: #cbd5e1;
+            padding: 60px 8% 20px;
+        }
+
+        .footerGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #cbd5e1;
+        }
+
+        footer a:hover {
+            color: #4ade80;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide img {
+                height: 300px;
+            }
+
+        }
+
+        .contenedorGrafico {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+        }
+        .encabezadoSeccion{
+    position:relative;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.encabezadoSeccion .titulo{
+    margin:0;
+    text-align:center;
+}
+
+.fechaActualizacion{
+    text-align:right;
+    color:#64748b;
+    font-size:.82rem;
+    margin-bottom:8px;
+}
+
+.fechaActualizacion strong{
+    color:#0f4c81;
+    font-weight:600;
+}
+
+@media(max-width:768px){
+
+    .fechaActualizacion{
+        text-align:center;
+        margin-bottom:10px;
+    }
+
+}
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+
+        <a href="index.html">
+            <img src="Imagenes/logo.jpg" class="logo">
+        </a>
+
+        <div class="TituloPequeno">
+            Red de Salud Celendín
+        </div>
+
+        <nav>
+            <ul class="menu">
+
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="CursosVida.html">Cursos de Vida</a></li>
+                <li><a href="adolescente.html" class="activo">Adolescente</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <section class="hero">
+        <h1>Curso de Vida Adolescente</h1>
+
+        <p>
+            Información consolidada del Curso de Vida Adolescente
+            de toda la Red Integrada de Salud Celendín.
+        </p>
+    </section>
+
+    <section>
+
+        <div class="encabezadoSeccion">
+
+    <div class="fechaActualizacion">
+        Fecha de última actualización:
+        <strong>10/08/2026</strong>
+    </div>
+
+  <h2 class="titulo">Indicadores del Curso de Vida Adolescente</h2>
+
+</div>
+       
+
+        <p class="subtitulo">
+            Información consolidada de todas las microredes.
+        </p>
+
+        <div class="gridIndicadores">
+
+            <div class="indicador">
+                <h3>3250</h3>
+                <p>Adolescentes Registrados</p>
+            </div>
+
+            <div class="indicador">
+                <h3>8240</h3>
+                <p>Vacunas Aplicadas</p>
+            </div>
+
+            <div class="indicador">
+                <h3>5632</h3>
+                <p>CRED Realizados</p>
+            </div>
+
+            <div class="indicador">
+                <h3>421</h3>
+                <p>Suplementación</p>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="microredes">
+
+       <h2 class="titulo">
+    Adolescentes por Microred
+</h2>
+
+        <p class="subtitulo">
+            Distribución referencial de Adolescentes registrados
+            en las microredes de la Red de Salud Celendín.
+        </p>
+
+        <div class="contenedorGrafico">
+            <canvas id="graficoNino"></canvas>
+        </div>
+
+        <div class="tablaMicroredes">
+
+            <div class="microItem">
+                <span>Pallán</span>
+                <span>420</span>
+            </div>
+
+            <div class="microItem">
+                <span>Sorochuco</span>
+                <span>510</span>
+            </div>
+
+            <div class="microItem">
+                <span>Cortegana</span>
+                <span>620</span>
+            </div>
+
+            <div class="microItem">
+                <span>Huasmín</span>
+                <span>480</span>
+            </div>
+
+            <div class="microItem">
+                <span>Sucre</span>
+                <span>390</span>
+            </div>
+
+            <div class="microItem">
+                <span>Miguel Iglesias</span>
+                <span>350</span>
+            </div>
+
+            <div class="microItem">
+                <span>De Apoyo Celendín</span>
+                <span>240</span>
+            </div>
+
+            <div class="microItem">
+                <span>José Gálvez</span>
+                <span>240</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cartilla">
+
+        <div class="encabezadoSeccion">
+
+    <div class="fechaActualizacion">
+        Fecha de última actualización:
+        <strong>05/08/2026</strong>
+    </div>
+
+   <h2 class="titulo">
+            Cartilla Adolescente
+        </h2>
+
+</div>
+        
+
+        <a href="ADOLECENTE/CARTILLA HIS 1 EVA 12 A 14 AÑOS-ACTUAL.xls" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS 1 EVA - 12 A 14 AÑOS ACTUAL
+
+        </a>
+         <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 1 EVA.xls" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS DE 12 A 17 AÑOS - 1 EVA
+
+        </a>
+         <a href="ADOLECENTE/CARTILLA HIS DE 12 A 17 AÑOS - 2 EVA.xls" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS DE 12 A 17 AÑOS - 2 EVA
+
+        </a>
+         <a href="ADOLECENTE/CARTILLA HIS SALUD BUCAL, ADOLESCENTE, JOVEN, ADULTO Y ADULTO MAYOR.jpeg" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS - SALUD BUCAL
+
+        </a>
+         <a href="ADOLECENTE/Copia de CARTILLA HIS DE 15 A 17 AÑOS.xls" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS - 15 A 17 AÑOS
+
+        </a>
+         <a href="ADOLECENTE/HIS TA + DOSAJE CONTROL 12 A 17 AÑOS.xls" download class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+            CARTILLA HIS TA + DOSAJE CONTROL DE 12 A 17 AÑOS
+
+        </a>
+
+        <br><br>
+
+        <img src="Imagenes/CARTILLADOLESCENTE.png" class="imagenCartilla">
+
+    </section>
+
+
+
+    <footer>
+
+        <div class="footerGrid">
+
+            <div>
+
+                <h3>Red de Salud Celendín</h3>
+
+                <p>
+                    Institución responsable de conducir y fortalecer
+                    los servicios de salud de toda la provincia.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Contacto</h3>
+
+                <p>
+                    <i class="fa fa-envelope"></i>
+                    redsaludcelendin@gmail.com
+                </p>
+
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    Celendín - Cajamarca
+                </p>
+
+                <p>
+                    <i class="fa fa-phone"></i>
+                    +51 930 384 753
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Síguenos</h3>
+
+                <p>
+                    <a href="#">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#">
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Red Integrada de Salud Celendín - Todos los derechos reservados.
+        </div>
+
+    </footer>
+
+
+
+    <script>
+        const ctx =
+            document.getElementById('graficoNino');
+
+        new Chart(ctx, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: [
+                    'Pallán',
+                    'Sorochuco',
+                    'Cortegana',
+                    'Huasmín',
+                    'Sucre',
+                    'Miguel Iglesias',
+                    'De Apoyo Celendín',
+                    'José Gálvez'
+                ],
+
+                datasets: [{
+
+                    label: 'Niños Registrados',
+
+                    data: [
+                        420,
+                        510,
+                        620,
+                        480,
+                        390,
+                        350,
+                        240,
+                        240
+                    ],
+
+                    backgroundColor: 'rgba(168,85,247,.75)',
+                    borderRadius: 10
+
+                }]
+
+            },
+
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

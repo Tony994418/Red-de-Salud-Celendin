@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de Vida - Red de Salud Celendín</title>
+
+    <link rel="icon" href="Imagenes/logo.jpg" type="image/x-icon">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 6%;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .TituloPequeno {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f4c81;
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #1e3a8a;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .menu a:hover,
+        .menu .activo {
+            color: #16a34a;
+        }
+
+        .menu .fa {
+            font-size: 1.2rem;
+        }
+
+        /* HERO */
+
+        .heroCursos {
+            min-height: 55vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 84px;
+            text-align: center;
+            padding: 80px 8%;
+            color: white;
+
+            background:
+                linear-gradient(rgba(15, 76, 129, .85),
+                    rgba(22, 163, 74, .75)),
+                url("Imagenes/cursoVidaprincipal.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .heroCursos h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .heroCursos p {
+            max-width: 900px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, .12);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* CURSOS */
+
+        .contenedorCursos {
+            width: 90%;
+            margin: 80px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .cursoCard {
+            background: white;
+            border-radius: 25px;
+            padding: 45px 25px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+            transition: .4s;
+            color: #0f4c81;
+        }
+
+        .cursoCard:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+        }
+
+
+
+        .cursoCard i.bxs-heart {
+            font-size: 80px;
+            color: rgba(182, 56, 161, 0.75);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard i.bxs-baby-carriage {
+            font-size: 80px;
+            color: rgba(37, 99, 235, .85);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard i.bxs-graduation {
+            font-size: 80px;
+            color: rgba(124, 58, 237, .85);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard i.bxs-user {
+            font-size: 80px;
+            color: rgba(6, 182, 212, .75);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard i.bxs-briefcase {
+            font-size: 80px;
+            color: rgba(22, 163, 74, .85);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard i.bxs-user-pin {
+            font-size: 80px;
+            color: rgba(251, 191, 36, .75);
+            margin-bottom: 20px;
+        }
+
+        .cursoCard h2 {
+            font-size: 1.5rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 50px 8%;
+        }
+
+        .footerGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #cbd5e1;
+        }
+
+        footer a:hover {
+            color: #4ade80;
+        }
+
+        .social a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding-top: 20px;
+        }
+
+        /* CARTILLAS COMPLEMENTARIAS */
+
+        .cartillasEspeciales {
+            background: linear-gradient(135deg,
+                    #eef7ff,
+                    #f0fdf4);
+            text-align: center;
+        }
+
+        .cartillasEspeciales .tituloSeccion {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cartillasEspeciales .subtituloSeccion {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .gridCartillas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .cartillaCard {
+            background: white;
+            padding: 35px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+            transition: .3s;
+            color: #1f2937;
+        }
+
+        .cartillaCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .12);
+        }
+
+        .cartillaCard i {
+            font-size: 4rem;
+            color: #16a34a;
+            margin-bottom: 20px;
+        }
+
+        .cartillaCard h3 {
+            color: #0f4c81;
+            margin-bottom: 15px;
+        }
+
+        .cartillaCard p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .cartillaCard span {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .heroCursos h1 {
+                font-size: 2.5rem;
+            }
+
+            .TituloPequeno {
+                text-align: center;
+                margin-left: 0;
+            }
+        }
+
+        .encabezadoSeccion{
+    position:relative;
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.encabezadoSeccion .titulo{
+    margin:0;
+    text-align:center;
+}
+
+.fechaActualizacion{
+    text-align:right;
+    color:#64748b;
+    font-size:.82rem;
+    margin-bottom:8px;
+}
+
+.fechaActualizacion strong{
+    color:#0f4c81;
+    font-weight:600;
+}
+
+@media(max-width:768px){
+
+    .fechaActualizacion{
+        text-align:center;
+        margin-bottom:10px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html">
+            <img src="Imagenes/logo.jpg" alt="" class="logo">
+        </a>
+
+        <div class="TituloPequeno">
+            Red de Salud Celendín
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="CursosVida.html" class="activo">Cursos de Vida</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Login.html">Iniciar Sesión</a></li>
+
+                <li>
+                    <a href="https://facebook.com" target="_blank" class="fa fa-facebook">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://wa.me/51930384753" target="_blank" class="fa fa-whatsapp">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <section class="heroCursos">
+
+        <h1>Cursos de Vida</h1>
+
+        <p>
+            Los cursos de vida permiten organizar las intervenciones sanitarias
+            de acuerdo con cada etapa del desarrollo humano, promoviendo una
+            atención integral, preventiva y oportuna para toda la población.
+        </p>
+
+    </section>
+
+    <section class="contenedorCursos">
+
+        <a href="materno.html" class="cursoCard">
+            <i class='bx bxs-heart'></i>
+            <h2>MATERNO</h2>
+        </a>
+
+        <a href="nino.html" class="cursoCard">
+            <i class='bx bxs-baby-carriage'></i>
+            <h2>NIÑO</h2>
+        </a>
+
+        <a href="adolescente.html" class="cursoCard">
+            <i class='bx bxs-graduation'></i>
+            <h2>ADOLESCENTE</h2>
+        </a>
+
+        <a href="joven.html" class="cursoCard">
+            <i class='bx bxs-user'></i>
+            <h2>JOVEN</h2>
+        </a>
+
+        <a href="adulto.html" class="cursoCard">
+            <i class='bx bxs-briefcase'></i>
+            <h2>ADULTO</h2>
+        </a>
+
+        <a href="adultoMayor.html" class="cursoCard">
+            <i class='bx bxs-user-pin'></i>
+            <h2>ADULTO MAYOR</h2>
+        </a>
+
+    </section>
+
+    <section class="cartillasEspeciales">
+
+
+        <div class="encabezadoSeccion">
+
+    <div class="fechaActualizacion">
+        Fecha de última actualización:
+        <strong>05/08/2026</strong>
+    </div>
+
+     <h2 class="tituloSeccion">
+            Cartillas Complementarias
+        </h2>
+
+</div>
+
+
+        <p class="subtituloSeccion">
+            Descarga las cartillas oficiales utilizadas para el seguimiento y monitoreo de estrategias sanitarias.
+        </p>
+
+        <div class="gridCartillas">
+
+            <a href="cartillas complementarias/CARTILLA HIS TBC.pdf" download class="cartillaCard">
+
+                <i class='bx bx-plus-medical'></i>
+
+                <h3>TBC</h3>
+
+                <p>
+                    Cartilla para seguimiento de pacientes con Tuberculosis.
+                </p>
+
+                <span>Descargar Excel</span>
+
+            </a>
+
+            <a href="cartillas complementarias/CARTILLA HIS CANCER.docx" download class="cartillaCard">
+
+                <i class='bx bx-heart-circle'></i>
+
+                <h3>Cáncer</h3>
+
+                <p>
+                    Registro y seguimiento de tamizajes y actividades preventivas.
+                </p>
+
+                <span>Descargar Excel</span>
+
+            </a>
+
+            <a href="cartillas complementarias/CARTILL HIS DISCAPACIDAD.pdf" download class="cartillaCard">
+
+                <i class='bx bx-accessibility'></i>
+
+                <h3>HIS Discapacidad</h3>
+
+                <p>
+                    Seguimiento de personas con discapacidad registradas en la Red.
+                </p>
+
+                <span>Descargar Excel</span>
+
+            </a>
+
+        </div>
+
+    </section>
+    <br>
+    <br>
+
+    <footer>
+
+        <div class="footerGrid">
+
+            <div>
+                <h3>Red Integrada de Salud Celendín</h3>
+
+                <p>
+                    Institución responsable de la gestión y fortalecimiento
+                    de los servicios de salud en toda la provincia.
+                </p>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+
+                <p>
+                    <i class="fa fa-envelope"></i>
+                    contacto@redsaludcelendin.gob.pe
+                </p>
+
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    Celendín - Cajamarca
+                </p>
+
+                <p>
+                    <i class="fa fa-phone"></i>
+                    +51 930 384 753
+                </p>
+            </div>
+
+            <div>
+
+                <h3>Síguenos</h3>
+
+                <div class="social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-whatsapp"></a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Red Integrada de Salud Celendín - Todos los derechos reservados.
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
