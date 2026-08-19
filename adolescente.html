@@ -290,6 +290,19 @@
             border-top: 1px solid rgba(255, 255, 255, .1);
         }
 
+
+         /* Menu Toggle */
+        .menuToggle {
+            display: none;
+
+            border: none;
+            background: none;
+
+            font-size: 2rem;
+            color: #0f4c81;
+
+            cursor: pointer;
+        }
         /* RESPONSIVE */
 
         @media(max-width:768px) {
@@ -324,20 +337,7 @@
                 text-overflow: ellipsis;
             }
 
-            /* BOTÓN HAMBURGUESA */
-            .menuToggle {
-                display: none;
-
-                border: none;
-                background: none;
-
-                font-size: 2rem;
-                color: #0f4c81;
-
-                cursor: pointer;
-            }
-
-
+        
 
             .menuToggle {
                 display: block;
@@ -465,18 +465,7 @@
 
         }
 
-        /* Menu Toggle */
-        .menuToggle {
-            display: none;
-
-            border: none;
-            background: none;
-
-            font-size: 2rem;
-            color: #0f4c81;
-
-            cursor: pointer;
-        }
+       
     </style>
 </head>
 
@@ -744,22 +733,6 @@
 
     </footer>
 
-    <script>
-
-        const menuToggle =
-            document.getElementById('menuToggle');
-
-        const nav =
-            document.querySelector('header nav');
-
-        menuToggle.addEventListener('click', function () {
-
-            nav.classList.toggle('menuAbierto');
-
-        });
-
-    </script>
-
 
     <script>
         const ctx =
@@ -815,8 +788,21 @@
         });
     </script>
 
+<script>
 
+        const menuToggle =
+            document.getElementById('menuToggle');
 
+        const nav =
+            document.querySelector('header nav');
+
+        menuToggle.addEventListener('click', function () {
+
+            nav.classList.toggle('menuAbierto');
+
+        });
+
+    </script>
 </body>
 
 </html>
