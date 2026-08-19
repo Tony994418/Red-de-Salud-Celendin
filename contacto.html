@@ -267,133 +267,135 @@
         }
 
         /* ================= RESPONSIVE ================= */
-        /* RESPONSIVE */
-     /* Menu Toggle */
-        .menuToggle {
-            display: none;
+           /* RESPONSIVE */
+  @media(max-width:768px) {
 
-            border: none;
-            background: none;
-
-            font-size: 2rem;
-            color: #0f4c81;
-
-            cursor: pointer;
-        }
-
-        /* RESPONSIVE */
-
-        @media(max-width:768px) {
-
-            /* =========================
+    /* =========================
        HEADER EN CELULAR
     ========================= */
 
-            header {
-                height: 70px;
+    header {
+        height: 70px;
 
-                flex-direction: row;
+        flex-direction: row;
 
-                padding: 8px 5%;
+        padding: 8px 5%;
 
-                gap: 10px;
-            }
+        gap: 10px;
+    }
 
-            .logo {
-                height: 48px;
-                width: auto;
-                object-fit: contain;
-            }
+    .logo {
+        height: 48px;
+        width: auto;
+        object-fit: contain;
+    }
 
-            .TituloPequeno {
-                font-size: .95rem;
+    .TituloPequeno {
+        font-size: .95rem;
 
-                margin-left: 5px;
+        margin-left: 5px;
 
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* BOTÓN HAMBURGUESA */
+
+    .menuToggle {
+        display: block;
+
+        margin-left: auto;
+
+        flex-shrink: 0;
+
+        border: none;
+        background: none;
+
+        font-size: 2rem;
+
+        color: #0f4c81;
+
+        cursor: pointer;
+    }
+
+    /* MENÚ */
+
+    header nav {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        box-shadow: 0 10px 25px rgba(0,0,0,.10);
+
+        display: none;
+    }
+
+    header nav.menuAbierto {
+        display: block;
+    }
+
+    .menu {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 0;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu a {
+        display: block;
+
+        width: 100%;
+
+        text-align: center;
+
+        padding: 13px 20px;
+
+        font-size: .95rem;
+    }
+
+    .menu a:hover {
+        background: #f0fdf4;
+    }
 
 
+    /* =========================
+       RESTO DE LA PÁGINA
+    ========================= */
 
-            .menuToggle {
-                display: block;
+    .hero h1 {
+        font-size: 2.5rem;
+    }
 
-                margin-left: auto;
+    .slide img {
+        height: 300px;
+    }
 
-                flex-shrink: 0;
+}
 
-                border: none;
-                background: none;
+.menuToggle{
+    display:none;
 
-                font-size: 2rem;
+    border:none;
+    background:none;
 
-                color: #0f4c81;
+    font-size:2rem;
+    color:#0f4c81;
 
-                cursor: pointer;
-            }
-
-            /* MENÚ */
-            nav {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
-                display: none;
-            }
-
-            nav.menuAbierto {
-                display: block;
-            }
-
-            .menu {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 10px 0;
-            }
-
-            .menu li {
-                width: 100%;
-            }
-
-            .menu a {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 13px 20px;
-                font-size: .95rem;
-            }
-
-            .menu a:hover {
-                background: #f0fdf4;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .slide img {
-                height: 300px;
-            }
-
-        }
-
-
-        .menuToggle {
-            display: none;
-
-            border: none;
-            background: none;
-
-            font-size: 2rem;
-            color: #0f4c81;
-
-            cursor: pointer;
-        }
+    cursor:pointer;
+}
     </style>
 </head>
 
@@ -405,9 +407,9 @@
         </a>
 
         <div class="TituloPequeno">Red Integrada de Salud Celendín</div>
-        <button class="menuToggle" id="menuToggle">
-            <i class='bx bx-menu'></i>
-        </button>
+<button class="menuToggle" id="menuToggle">
+    <i class='bx bx-menu'></i>
+</button>
         <nav>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -498,10 +500,8 @@
 
         <!-- ================= MAPA ================= -->
         <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2spe!4v1786551789953!5m2!1ses-419!2spe!6m8!1m7!1sZ-VRRI2vMDRrgOaOEdiEdg!2m2!1d-6.869751506772911!2d-78.14627359925697!3f279.07321023778655!4f2.8260549953317877!5f0.7820865974627469"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2spe!4v1786551789953!5m2!1ses-419!2spe!6m8!1m7!1sZ-VRRI2vMDRrgOaOEdiEdg!2m2!1d-6.869751506772911!2d-78.14627359925697!3f279.07321023778655!4f2.8260549953317877!5f0.7820865974627469"
+             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
     </section>
 
@@ -577,19 +577,19 @@
     </style>
     <script>
 
-        const menuToggle =
-            document.getElementById('menuToggle');
+const menuToggle =
+document.getElementById('menuToggle');
 
-        const nav =
-            document.querySelector('header nav');
+const nav =
+document.querySelector('header nav');
 
-        menuToggle.addEventListener('click', function () {
+menuToggle.addEventListener('click', function(){
 
-            nav.classList.toggle('menuAbierto');
+    nav.classList.toggle('menuAbierto');
 
-        });
+});
 
-    </script>
+</script>
 </body>
 
 </html>
