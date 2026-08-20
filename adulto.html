@@ -290,7 +290,7 @@
 
         /* RESPONSIVE */
 
-       /* Menu Toggle */
+        /* Menu Toggle */
         .menuToggle {
             display: none;
 
@@ -447,8 +447,6 @@
             }
 
         }
-
-       
     </style>
 </head>
 
@@ -491,8 +489,8 @@
 
     </section>
 
+    <!--
     <section>
-
 
         <div class="encabezadoSeccion">
 
@@ -531,16 +529,22 @@
         </div>
 
     </section>
+    -->
     <section class="microredes">
-
+        <div class="fechaActualizacion">
+            Fecha de última actualización:
+            <strong>10/08/2026</strong>
+        </div>
         <h2 class="titulo">
             Adultos por Microred
         </h2>
+
 
         <p class="subtitulo">
             Distribución referencial de adultos registrados
             en las microredes de la Red de Salud Celendín.
         </p>
+
         <div class="contenedorGrafico">
             <canvas id="graficoAdulto"></canvas>
         </div>
@@ -548,43 +552,43 @@
         <div class="tablaMicroredes">
 
             <div class="microItem">
-                <span>Pallán</span>
-                <span>620</span>
+                <span>La Libertad de Pallán</span>
+                <span>607</span>
             </div>
 
             <div class="microItem">
                 <span>Sorochuco</span>
-                <span>740</span>
+                <span>3445</span>
             </div>
 
             <div class="microItem">
                 <span>Cortegana</span>
-                <span>890</span>
+                <span>1498</span>
             </div>
 
             <div class="microItem">
                 <span>Huasmín</span>
-                <span>680</span>
+                <span>607</span>
             </div>
 
             <div class="microItem">
                 <span>Sucre</span>
-                <span>540</span>
+                <span>5077</span>
             </div>
 
             <div class="microItem">
                 <span>Miguel Iglesias</span>
-                <span>470</span>
+                <span>1453</span>
             </div>
 
             <div class="microItem">
-                <span>Utco</span>
-                <span>410</span>
+                <span>De Apoyo Celendín</span>
+                <span>4557</span>
             </div>
 
             <div class="microItem">
-                <span>José Gálvez</span>
-                <span>470</span>
+                <span>No Pertenece a Ninguna Microred</span>
+                <span>515</span>
             </div>
 
         </div>
@@ -702,7 +706,7 @@
                     'Huasmín',
                     'Sucre',
                     'Miguel Iglesias',
-                    'Utco',
+                    'De Apoyo Celendín',
                     'José Gálvez'
                 ],
 
@@ -711,14 +715,14 @@
                     label: 'Adultos Registrados',
 
                     data: [
-                        620,
-                        740,
-                        890,
-                        680,
-                        540,
-                        470,
-                        410,
-                        470
+                        607,
+                        3445,
+                        1498,
+                        607,
+                        5077,
+                        1453,
+                        4557,
+                        515
                     ],
 
                     backgroundColor: '#16a34a',
