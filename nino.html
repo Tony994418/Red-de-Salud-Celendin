@@ -536,7 +536,7 @@
     <section class="microredes">
  <div class="fechaActualizacion">
                 Fecha de última actualización:
-                <strong>20/08/2026</strong>
+                <strong id="fechaMicroredes">Cargando...</strong>
             </div>
 
         <h2 class="titulo">
@@ -552,12 +552,9 @@
             <canvas id="graficoNino"></canvas>
         </div>
 
-        <div class="tablaMicroredes">
-
-            <div class="microItem">
-                <span>La Libertad dePallán</span>
-                <span>1092</span>
-            </div>
+        <div class="tablaMicroredes" id="tablaMicroredes">
+            <div class="microItem"><span>Cargando...</span><span>--</span></div>
+        </div>
 
             <div class="microItem">
                 <span>Sorochuco</span>
@@ -720,59 +717,149 @@
 
 
 
-    <script>
-        const ctx =
-            document.getElementById('graficoNino');
+    <script type="module">
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { db } from "./firebase-config.js";
 
-        new Chart(ctx, {
+        const microredes = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmin",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-            type: 'bar',
+       const etiquetasGrafico = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmín",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-            data: {
+        function normalizar(texto) {
+            return String(texto)
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .replace(/\s+/g, " ")
+                .trim();
+        }
 
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'Miguel Iglesias',
-                    'De Apoyo Celendín',
-                    'No Pertenece'
-                ],
+        function obtenerValor(microredesFirebase, nombre) {
+            if (!microredesFirebase || typeof microredesFirebase !== "object") return 0;
 
-                datasets: [{
-
-                    label: 'Niños Registrados',
-
-                    data: [
-                        1092,
-                        1315,
-                        1420,
-                        1542,
-                        2768,
-                        1015,
-                        5223,
-                        765
-                    ],
-
-                    backgroundColor: '#2563eb',
-                    borderRadius: 10
-
-                }]
-
-            },
-
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
+            if (microredesFirebase[nombre] !== undefined) {
+                return Number(microredesFirebase[nombre]) || 0;
             }
 
-        });
+            const buscado = normalizar(nombre);
+            const clave = Object.keys(microredesFirebase).find(
+                key => normalizar(key) === buscado
+            );
+
+            return clave !== undefined
+                ? Number(microredesFirebase[clave]) || 0
+                : 0;
+        }
+
+        async function cargarDatosNino() {
+            const tabla = document.getElementById("tablaMicroredes");
+            const fecha = document.getElementById("fechaMicroredes");
+
+            try {
+                const referencia = doc(db, "cursosVida", "nino");
+                const resultado = await getDoc(referencia);
+
+                if (!resultado.exists()) {
+                    throw new Error("No existe el documento cursosVida/nino en Firebase.");
+                }
+
+                const datos = resultado.data();
+                const datosMicroredes = datos.microredes || {};
+                const fechaActualizacion = datos.fechaActualizacion || "Sin registrar";
+
+                const valores = microredes.map(nombre =>
+                    obtenerValor(datosMicroredes, nombre)
+                );
+
+                const total = valores.reduce((suma, valor) => suma + valor, 0);
+
+                fecha.textContent = fechaActualizacion;
+
+                tabla.innerHTML = "";
+
+                microredes.forEach((nombre, indice) => {
+                    const item = document.createElement("div");
+                    item.className = "microItem";
+
+                    const nombreElemento = document.createElement("span");
+                    nombreElemento.textContent = nombre;
+
+                    const valorElemento = document.createElement("span");
+                    valorElemento.textContent = valores[indice];
+
+                    item.appendChild(nombreElemento);
+                    item.appendChild(valorElemento);
+                    tabla.appendChild(item);
+                });
+
+                const ctx = document.getElementById("graficoNino");
+
+                new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: etiquetasGrafico,
+                        datasets: [{
+                            label: "Niños Registrados",
+                            data: valores,
+                            backgroundColor: "#2563eb",
+                            borderRadius: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                console.log("Total de niños registrados:", total);
+
+            } catch (error) {
+                console.error("Error cargando datos de Niño desde Firebase:", error);
+
+                fecha.textContent = "No disponible";
+                tabla.innerHTML = `
+                    <div style="
+                        grid-column: 1 / -1;
+                        text-align: center;
+                        padding: 25px;
+                        color: #64748b;
+                        background: white;
+                        border-radius: 18px;
+                    ">
+                        No se pudieron cargar los datos desde Firebase.
+                    </div>
+                `;
+            }
+        }
+
+        cargarDatosNino();
     </script>
     <script>
 

@@ -2,8 +2,11 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Iniciar Sesión - Red Integrada de Salud Celendín</title>
 
     <!-- Favicon -->
@@ -13,12 +16,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-    /* =========================
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
+
+
+<style>
+
+/* =========================
    RESET
 ========================= */
 
@@ -28,10 +37,15 @@
     box-sizing: border-box;
 }
 
+
 body {
+
     font-family: 'Poppins', sans-serif;
+
     background: #f5f8fc;
+
     color: #1e293b;
+
 }
 
 
@@ -40,7 +54,13 @@ body {
 ========================= */
 
 header {
-    background: linear-gradient(135deg, #0f4c81, #16a34a);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
 
     color: white;
 
@@ -60,6 +80,7 @@ header {
     top: 0;
 
     z-index: 1000;
+
 }
 
 
@@ -68,6 +89,7 @@ header {
 ========================= */
 
 .logo-container {
+
     display: flex;
 
     align-items: center;
@@ -77,19 +99,23 @@ header {
     flex: 1;
 
     min-width: 0;
+
 }
 
 
 .logo-container img {
+
     width: 65px;
 
     height: auto;
 
     object-fit: contain;
+
 }
 
 
 .logo-container h1 {
+
     font-size: 1.4rem;
 
     font-weight: 600;
@@ -99,6 +125,7 @@ header {
     overflow: hidden;
 
     text-overflow: ellipsis;
+
 }
 
 
@@ -107,15 +134,18 @@ header {
 ========================= */
 
 nav {
+
     display: flex;
 
     align-items: center;
 
     gap: 25px;
+
 }
 
 
 nav a {
+
     color: white;
 
     text-decoration: none;
@@ -125,10 +155,12 @@ nav a {
     position: relative;
 
     transition: .3s;
+
 }
 
 
 nav a::after {
+
     content: '';
 
     position: absolute;
@@ -144,12 +176,15 @@ nav a::after {
     background: white;
 
     transition: .3s;
+
 }
 
 
 nav a:hover::after,
 nav a.activo::after {
+
     width: 100%;
+
 }
 
 
@@ -158,6 +193,7 @@ nav a.activo::after {
 ========================= */
 
 .menuToggle {
+
     display: none;
 
     border: none;
@@ -175,6 +211,7 @@ nav a.activo::after {
     margin-left: auto;
 
     flex-shrink: 0;
+
 }
 
 
@@ -183,6 +220,7 @@ nav a.activo::after {
 ========================= */
 
 .login-section {
+
     min-height: calc(100vh - 100px);
 
     display: flex;
@@ -194,16 +232,19 @@ nav a.activo::after {
     padding: 60px 20px;
 
     background:
+
         radial-gradient(
             circle at top right,
             rgba(22, 163, 74, 0.08),
             transparent 35%
         ),
+
         radial-gradient(
             circle at bottom left,
             rgba(15, 76, 129, 0.08),
             transparent 35%
         );
+
 }
 
 
@@ -212,6 +253,7 @@ nav a.activo::after {
 ========================= */
 
 .login-card {
+
     background: white;
 
     width: 100%;
@@ -228,6 +270,7 @@ nav a.activo::after {
     text-align: center;
 
     animation: fadeUp .8s ease;
+
 }
 
 
@@ -236,6 +279,7 @@ nav a.activo::after {
 ========================= */
 
 .login-icon {
+
     width: 90px;
 
     height: 90px;
@@ -263,6 +307,7 @@ nav a.activo::after {
 
     box-shadow:
         0 10px 30px rgba(15, 76, 129, 0.25);
+
 }
 
 
@@ -271,20 +316,24 @@ nav a.activo::after {
 ========================= */
 
 .login-card h2 {
+
     color: #0f4c81;
 
     margin-bottom: 10px;
 
     font-size: 2rem;
+
 }
 
 
 .login-card > p {
+
     color: #64748b;
 
     margin-bottom: 35px;
 
     font-size: .95rem;
+
 }
 
 
@@ -293,15 +342,18 @@ nav a.activo::after {
 ========================= */
 
 .input-group {
+
     position: relative;
 
     margin-bottom: 22px;
 
     text-align: left;
+
 }
 
 
 .input-group label {
+
     display: block;
 
     margin-bottom: 8px;
@@ -309,10 +361,12 @@ nav a.activo::after {
     font-weight: 500;
 
     color: #334155;
+
 }
 
 
 .input-group input {
+
     width: 100%;
 
     padding: 14px 45px 14px 15px;
@@ -329,20 +383,26 @@ nav a.activo::after {
     transition: .3s;
 
     font-family: inherit;
+
 }
 
 
 .input-group input:focus {
+
     border-color: #0f4c81;
 
     box-shadow:
         0 0 0 4px rgba(15, 76, 129, 0.08);
+
 }
 
 
-/* ICONOS INPUT */
+/* =========================
+   ICONOS INPUT
+========================= */
 
 .input-group > i {
+
     position: absolute;
 
     right: 15px;
@@ -350,15 +410,20 @@ nav a.activo::after {
     top: 44px;
 
     color: #94a3b8;
+
 }
 
 
-/* OJO CONTRASEÑA */
+/* =========================
+   OJO CONTRASEÑA
+========================= */
 
 .toggle-password {
+
     cursor: pointer;
 
     z-index: 2;
+
 }
 
 
@@ -367,6 +432,7 @@ nav a.activo::after {
 ========================= */
 
 .btn-login {
+
     width: 100%;
 
     border: none;
@@ -396,14 +462,28 @@ nav a.activo::after {
         0 12px 25px rgba(15, 76, 129, 0.18);
 
     margin-top: 10px;
+
 }
 
 
 .btn-login:hover {
+
     transform: translateY(-3px);
 
     box-shadow:
         0 18px 35px rgba(15, 76, 129, 0.22);
+
+}
+
+
+.btn-login:disabled {
+
+    opacity: .7;
+
+    cursor: wait;
+
+    transform: none;
+
 }
 
 
@@ -412,28 +492,61 @@ nav a.activo::after {
 ========================= */
 
 .extra-links {
+
     margin-top: 25px;
 
     font-size: .9rem;
+
 }
 
 
 .extra-links p {
+
     margin: 0;
+
 }
 
 
 .extra-links a {
+
     color: #0f4c81;
 
     text-decoration: none;
 
     font-weight: 500;
+
 }
 
 
 .extra-links a:hover {
+
     text-decoration: underline;
+
+}
+
+
+/* =========================
+   MENSAJE DE ERROR
+========================= */
+
+.login-error {
+
+    display: none;
+
+    margin-bottom: 20px;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    font-size: .85rem;
+
+    text-align: center;
+
 }
 
 
@@ -442,6 +555,7 @@ nav a.activo::after {
 ========================= */
 
 footer {
+
     background: #0f172a;
 
     color: #cbd5e1;
@@ -451,6 +565,7 @@ footer {
     padding: 25px;
 
     font-size: .9rem;
+
 }
 
 
@@ -461,15 +576,19 @@ footer {
 @keyframes fadeUp {
 
     from {
+
         opacity: 0;
 
         transform: translateY(40px);
+
     }
 
     to {
+
         opacity: 1;
 
         transform: translateY(0);
+
     }
 
 }
@@ -481,11 +600,13 @@ footer {
 
 @media (max-width: 768px) {
 
+
     /* =========================
        HEADER
     ========================= */
 
     header {
+
         height: 70px;
 
         padding: 8px 5%;
@@ -497,30 +618,36 @@ footer {
         align-items: center;
 
         gap: 10px;
+
     }
 
 
     /* LOGO */
 
     .logo-container {
+
         min-width: 0;
 
         gap: 10px;
+
     }
 
 
     .logo-container img {
+
         width: 48px;
 
         height: 48px;
 
         object-fit: contain;
+
     }
 
 
     /* TÍTULO */
 
     .logo-container h1 {
+
         font-size: .95rem;
 
         font-weight: 600;
@@ -530,6 +657,7 @@ footer {
         overflow: hidden;
 
         text-overflow: ellipsis;
+
     }
 
 
@@ -538,6 +666,7 @@ footer {
     ========================= */
 
     .menuToggle {
+
         display: block;
 
         color: white;
@@ -545,6 +674,7 @@ footer {
         font-size: 2rem;
 
         margin-left: auto;
+
     }
 
 
@@ -553,6 +683,7 @@ footer {
     ========================= */
 
     header nav {
+
         position: absolute;
 
         top: 70px;
@@ -573,19 +704,23 @@ footer {
         gap: 0;
 
         padding: 10px 0;
+
     }
 
 
     /* MENÚ ABIERTO */
 
     header nav.menuAbierto {
+
         display: flex;
+
     }
 
 
     /* ENLACES */
 
     header nav a {
+
         display: block;
 
         width: 100%;
@@ -599,13 +734,16 @@ footer {
         font-size: .95rem;
 
         transition: .3s;
+
     }
 
 
     /* QUITAR LÍNEA INFERIOR */
 
     header nav a::after {
+
         display: none;
+
     }
 
 
@@ -613,9 +751,11 @@ footer {
 
     header nav a:hover,
     header nav a.activo {
+
         background: #f0fdf4;
 
         color: #16a34a;
+
     }
 
 
@@ -624,22 +764,27 @@ footer {
     ========================= */
 
     .login-section {
+
         min-height: calc(100vh - 70px);
 
         padding: 40px 20px;
+
     }
 
 
     .login-card {
+
         max-width: 420px;
 
         padding: 40px 25px;
 
         border-radius: 25px;
+
     }
 
 
     .login-icon {
+
         width: 75px;
 
         height: 75px;
@@ -647,18 +792,23 @@ footer {
         font-size: 2rem;
 
         margin-bottom: 20px;
+
     }
 
 
     .login-card h2 {
+
         font-size: 1.7rem;
+
     }
 
 
     .login-card > p {
+
         font-size: .88rem;
 
         margin-bottom: 28px;
+
     }
 
 
@@ -667,9 +817,11 @@ footer {
     ========================= */
 
     footer {
+
         font-size: .8rem;
 
         padding: 20px;
+
     }
 
 }
@@ -681,164 +833,511 @@ footer {
 
 @media (max-width: 480px) {
 
+
     header {
+
         padding: 8px 4%;
+
     }
 
 
     .logo-container {
+
         gap: 8px;
+
     }
 
 
     .logo-container img {
+
         width: 42px;
 
         height: 42px;
+
     }
 
 
     .logo-container h1 {
+
         font-size: .82rem;
+
     }
 
 
     .menuToggle {
+
         font-size: 1.8rem;
+
     }
 
 
     .login-section {
+
         padding: 30px 15px;
+
     }
 
 
     .login-card {
+
         padding: 35px 20px;
 
         border-radius: 22px;
+
     }
 
 
     .login-card h2 {
+
         font-size: 1.5rem;
+
     }
 
 
     .input-group input {
+
         padding: 13px 42px 13px 13px;
 
         font-size: .9rem;
+
     }
 
 
     .btn-login {
+
         padding: 14px;
 
         font-size: .95rem;
+
     }
 
 }
 
-    </style>
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="Imagenes/logo-png.png" alt="Logo">
-            </a>
-            <h1>Red Integrada de Salud Celendín</h1>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+
+    <div class="logo-container">
+
+
+        <a href="index.html">
+
+            <img
+                src="Imagenes/logo-png.png"
+                alt="Logo">
+
+        </a>
+
+
+        <h1>
+            Red Integrada de Salud Celendín
+        </h1>
+
+
+    </div>
+
+
+    <button
+        class="menuToggle"
+        id="menuToggle"
+        aria-label="Abrir menú">
+
+        <i class='bx bx-menu'></i>
+
+    </button>
+
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+
+        <a href="noticias.html">
+            Noticias
+        </a>
+
+
+        <a href="cursosVida.html">
+            Cursos de Vida
+        </a>
+
+
+        <a href="login.html"
+           class="activo">
+
+            Iniciar Sesión
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<section class="login-section">
+
+
+    <div class="login-card">
+
+
+        <div class="login-icon">
+
+            <i class="fas fa-user-shield"></i>
+
         </div>
-        <button class="menuToggle" id="menuToggle">
-            <i class='bx bx-menu'></i>
-        </button>
 
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="noticias.html">Noticias</a>
-            <a href="cursosVida.html">Cursos de Vida</a>
-            <a href="login.html" class="activo">Iniciar Sesión</a>
-        </nav>
-    </header>
 
-    <!-- LOGIN -->
-    <section class="login-section">
-        <div class="login-card">
-            <div class="login-icon">
-                <i class="fas fa-user-shield"></i>
+        <h2>
+            Iniciar Sesión
+        </h2>
+
+
+        <p>
+            Accede al panel administrativo de la
+            Red Integrada de Salud Celendín.
+        </p>
+
+
+        <!-- MENSAJE DE ERROR -->
+
+        <div
+            class="login-error"
+            id="loginError">
+
+            Correo electrónico o contraseña incorrectos.
+
+        </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="input-group">
+
+
+                <label for="email">
+
+                    Correo electrónico
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="usuario@riscelendin.gob.pe"
+                    required>
+
+
+                <i class="fas fa-envelope"></i>
+
+
             </div>
 
-            <h2>Iniciar Sesión</h2>
-            <p>Accede al panel administrativo de la Red Integrada de Salud Celendín.</p>
 
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" placeholder="usuario@riscelendin.gob.pe" required>
-                    <i class="fas fa-envelope"></i>
-                </div>
 
-                <div class="input-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" placeholder="Ingrese su contraseña" required>
-                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
-                </div>
+            <div class="input-group">
 
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-right-to-bracket"></i> Iniciar Sesión
-                </button>
-            </form>
 
-            <div class="extra-links">
-                <p><a href="#">¿Olvidó su contraseña?</a></p>
+                <label for="password">
+
+                    Contraseña
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingrese su contraseña"
+                    required>
+
+
+                <i
+                    class="fas fa-eye toggle-password"
+                    id="togglePassword">
+                </i>
+
+
             </div>
+
+
+
+            <button
+                type="submit"
+                class="btn-login"
+                id="btnLogin">
+
+                <i class="fas fa-right-to-bracket"></i>
+
+                Iniciar Sesión
+
+            </button>
+
+
+        </form>
+
+
+        <div class="extra-links">
+
+            <p>
+
+                <a href="#">
+                    ¿Olvidó su contraseña?
+                </a>
+
+            </p>
+
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Red Integrada de Salud Celendín - Todos los derechos reservados.
-    </footer>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // Mostrar / ocultar contraseña
-        const togglePassword = document.getElementById('togglePassword');
-        const password = document.getElementById('password');
+    </div>
 
-        togglePassword.addEventListener('click', () => {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
 
-            togglePassword.classList.toggle('fa-eye');
-            togglePassword.classList.toggle('fa-eye-slash');
-        });
+</section>
 
-        // Simulación de envío del formulario
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Aquí conectaremos el inicio de sesión con Firebase Authentication.');
-        });
-    </script>
-    <script>
 
-        const menuToggle =
-            document.getElementById('menuToggle');
+<!-- =========================
+     FOOTER
+========================= -->
 
-        const nav =
-            document.querySelector('header nav');
+<footer>
 
-        menuToggle.addEventListener('click', function () {
+    © 2026 Red Integrada de Salud Celendín -
+    Todos los derechos reservados.
 
-            nav.classList.toggle('menuAbierto');
+</footer>
 
-        });
 
-    </script>
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+
+<!-- MOSTRAR / OCULTAR CONTRASEÑA -->
+
+<script>
+
+const togglePassword =
+    document.getElementById('togglePassword');
+
+const password =
+    document.getElementById('password');
+
+
+togglePassword.addEventListener(
+    'click',
+    function () {
+
+        const type =
+            password.getAttribute('type') === 'password'
+                ? 'text'
+                : 'password';
+
+
+        password.setAttribute(
+            'type',
+            type
+        );
+
+
+        togglePassword.classList.toggle(
+            'fa-eye'
+        );
+
+
+        togglePassword.classList.toggle(
+            'fa-eye-slash'
+        );
+
+    }
+);
+
+</script>
+
+
+<!-- =========================
+     MENÚ RESPONSIVE
+========================= -->
+
+<script>
+
+const menuToggle =
+    document.getElementById('menuToggle');
+
+
+const nav =
+    document.querySelector('header nav');
+
+
+menuToggle.addEventListener(
+    'click',
+    function () {
+
+        nav.classList.toggle(
+            'menuAbierto'
+        );
+
+    }
+);
+
+
+/* Cerrar menú al seleccionar una opción */
+
+nav.querySelectorAll('a').forEach(
+    function (link) {
+
+        link.addEventListener(
+            'click',
+            function () {
+
+                nav.classList.remove(
+                    'menuAbierto'
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+<!-- =========================
+     FIREBASE AUTHENTICATION
+========================= -->
+
+<script type="module">
+
+import { auth } from "./firebase-config.js";
+
+
+import {
+    signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+
+const loginForm =
+    document.getElementById('loginForm');
+
+
+const loginError =
+    document.getElementById('loginError');
+
+
+const btnLogin =
+    document.getElementById('btnLogin');
+
+
+
+loginForm.addEventListener(
+    'submit',
+    async function (e) {
+
+        e.preventDefault();
+
+
+        const email =
+            document
+                .getElementById('email')
+                .value
+                .trim();
+
+
+        const passwordValue =
+            document
+                .getElementById('password')
+                .value;
+
+
+        loginError.style.display =
+            'none';
+
+
+        btnLogin.disabled =
+            true;
+
+
+        btnLogin.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Ingresando...';
+
+
+
+        try {
+
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                passwordValue
+            );
+
+
+            /*
+             * LOGIN CORRECTO
+             *
+             * Envia al panel administrativo.
+             */
+
+            window.location.href =
+                'admin.html';
+
+
+        }
+
+
+        catch (error) {
+
+
+            console.error(
+                'Error de autenticación:',
+                error
+            );
+
+
+            loginError.textContent =
+                'Correo electrónico o contraseña incorrectos.';
+
+
+            loginError.style.display =
+                'block';
+
+
+            btnLogin.disabled =
+                false;
+
+
+            btnLogin.innerHTML =
+                '<i class="fas fa-right-to-bracket"></i> Iniciar Sesión';
+
+        }
+
+    }
+);
+
+</script>
+
+
 </body>
 
 </html>

@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de Administración - Red Integrada de Salud Celendín</title>
+
+    <link rel="icon" href="Imagenes/logo-png.png" type="image/x-icon">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #f5f8fc;
+
+    color: #1e293b;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
+
+    color: white;
+
+    padding: 12px 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+}
+
+
+.logo-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.logo-container img {
+
+    width: 65px;
+
+    height: auto;
+
+    object-fit: contain;
+
+}
+
+
+.logo-container h1 {
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: .3s;
+
+}
+
+
+nav a:hover {
+
+    color: #dcfce7;
+
+}
+
+
+/* =====================================================
+   MENU MOBILE
+===================================================== */
+
+.menuToggle {
+
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    padding: 5px;
+
+    margin-left: auto;
+
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.admin-section {
+
+    min-height: calc(100vh - 100px);
+
+    padding: 70px 6%;
+
+}
+
+
+/* =====================================================
+   CABECERA
+===================================================== */
+
+.admin-header {
+
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 25px;
+
+}
+
+
+.admin-header h2 {
+
+    color: #0f4c81;
+
+    font-size: 2.2rem;
+
+    margin-bottom: 5px;
+
+}
+
+
+.admin-header p {
+
+    color: #64748b;
+
+    font-size: .95rem;
+
+}
+
+
+.usuario {
+
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.07);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.usuario i {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    color: #0f4c81;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.usuario small {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: .75rem;
+
+}
+
+
+.usuario strong {
+
+    color: #334155;
+
+    font-size: .85rem;
+
+}
+
+
+/* =====================================================
+   CURSOS DE VIDA
+===================================================== */
+
+.cursos-grid {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.curso-card {
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.07);
+
+    border: 2px solid transparent;
+
+    transition: .3s;
+
+    cursor: pointer;
+
+}
+
+
+.curso-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #16a34a;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.10);
+
+}
+
+
+.curso-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 1.7rem;
+
+    margin-bottom: 20px;
+
+}
+
+
+.curso-card h3 {
+
+    color: #0f4c81;
+
+    font-size: 1.2rem;
+
+    margin-bottom: 7px;
+
+}
+
+
+.curso-card p {
+
+    color: #64748b;
+
+    font-size: .85rem;
+
+}
+
+
+/* =====================================================
+   EDITOR
+===================================================== */
+
+.editor {
+
+    max-width: 1000px;
+
+    margin: 45px auto 0;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.08);
+
+    display: none;
+
+}
+
+
+.editor.visible {
+
+    display: block;
+
+    animation: aparecer .35s ease;
+
+}
+
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   TITULO EDITOR
+===================================================== */
+
+.editor-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.editor-title h3 {
+
+    color: #0f4c81;
+
+    font-size: 1.6rem;
+
+}
+
+
+.btn-cerrar {
+
+    border: none;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+}
+
+
+.btn-cerrar:hover {
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+}
+
+
+/* =====================================================
+   FECHA
+===================================================== */
+
+.fecha-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f0fdf4
+        );
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.fecha-box label {
+
+    display: block;
+
+    font-weight: 600;
+
+    color: #334155;
+
+    margin-bottom: 8px;
+
+}
+
+
+.fecha-box input {
+
+    padding: 12px 15px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    outline: none;
+
+}
+
+
+.fecha-box input:focus {
+
+    border-color: #0f4c81;
+
+}
+
+
+/* =====================================================
+   TABLA
+===================================================== */
+
+.tabla-container {
+
+    overflow-x: auto;
+
+}
+
+
+.tabla-microredes {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+.tabla-microredes th {
+
+    background: #0f4c81;
+
+    color: white;
+
+    padding: 14px;
+
+    text-align: left;
+
+    font-size: .9rem;
+
+}
+
+
+.tabla-microredes th:first-child {
+
+    border-radius: 10px 0 0 10px;
+
+}
+
+
+.tabla-microredes th:last-child {
+
+    border-radius: 0 10px 10px 0;
+
+}
+
+
+.tabla-microredes td {
+
+    padding: 12px 14px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+}
+
+
+.tabla-microredes tr:hover td {
+
+    background: #f8fafc;
+
+}
+
+
+.nombre-microred {
+
+    font-weight: 500;
+
+    color: #334155;
+
+}
+
+
+.cantidad-input {
+
+    width: 120px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: .95rem;
+
+    text-align: center;
+
+}
+
+
+.cantidad-input:focus {
+
+    border-color: #0f4c81;
+
+    box-shadow:
+        0 0 0 3px rgba(15,76,129,.08);
+
+}
+
+
+/* =====================================================
+   BOTÓN GUARDAR
+===================================================== */
+
+.guardar-container {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+}
+
+
+.btn-guardar {
+
+    border: none;
+
+    padding: 14px 25px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f4c81,
+            #16a34a
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    min-width: 190px;
+
+}
+
+
+.btn-guardar:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(15,76,129,.18);
+
+}
+
+
+.btn-guardar:disabled {
+
+    opacity: .7;
+
+    cursor: wait;
+
+    transform: none;
+
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.mensaje {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.15);
+
+    display: none;
+
+    z-index: 5000;
+
+}
+
+
+.mensaje.error {
+
+    background: #dc2626;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .cursos-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    header {
+
+        height: 70px;
+
+        padding: 8px 5%;
+
+        flex-direction: row;
+
+    }
+
+
+    .logo-container {
+
+        gap: 10px;
+
+    }
+
+
+    .logo-container img {
+
+        width: 48px;
+
+        height: 48px;
+
+    }
+
+
+    .logo-container h1 {
+
+        font-size: .95rem;
+
+    }
+
+
+    .menuToggle {
+
+        display: block;
+
+    }
+
+
+    header nav {
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: white;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,.12);
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 10px 0;
+
+    }
+
+
+    header nav.menuAbierto {
+
+        display: flex;
+
+    }
+
+
+    header nav a {
+
+        width: 100%;
+
+        padding: 14px 20px;
+
+        text-align: center;
+
+        color: #0f4c81;
+
+    }
+
+
+    .admin-section {
+
+        padding: 45px 5%;
+
+    }
+
+
+    .admin-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .admin-header h2 {
+
+        font-size: 1.8rem;
+
+    }
+
+
+    .cursos-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .editor {
+
+        padding: 25px 18px;
+
+    }
+
+
+    .guardar-container {
+
+        justify-content: stretch;
+
+    }
+
+
+    .btn-guardar {
+
+        width: 100%;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .logo-container img {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .logo-container h1 {
+
+        font-size: .82rem;
+
+    }
+
+
+    .admin-section {
+
+        padding: 35px 15px;
+
+    }
+
+
+    .cantidad-input {
+
+        width: 90px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+
+    <div class="logo-container">
+
+        <a href="index.html">
+
+            <img
+                src="Imagenes/logo-png.png"
+                alt="Logo">
+
+        </a>
+
+
+        <h1>
+            Red Integrada de Salud Celendín
+        </h1>
+
+    </div>
+
+
+    <button
+        class="menuToggle"
+        id="menuToggle"
+        aria-label="Abrir menú">
+
+        <i class='bx bx-menu'></i>
+
+    </button>
+
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+        <a href="noticias.html">
+            Noticias
+        </a>
+
+        <a href="cursosVida.html">
+            Cursos de Vida
+        </a>
+
+        <a href="#"
+           id="cerrarSesion">
+
+            Cerrar Sesión
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+
+<section class="admin-section">
+
+
+    <div class="admin-header">
+
+
+        <div>
+
+            <h2>
+                Panel de Administración
+            </h2>
+
+            <p>
+                Actualización de información de los cursos de vida.
+            </p>
+
+        </div>
+
+
+        <div class="usuario">
+
+            <i class="fas fa-user-shield"></i>
+
+            <div>
+
+                <small>
+                    Administrador
+                </small>
+
+                <strong id="usuarioEmail">
+                    Cargando...
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CURSOS
+    ================================================= -->
+
+    <div class="cursos-grid">
+
+
+        <div class="curso-card"
+             data-curso="materno">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-person-pregnant"></i>
+
+            </div>
+
+            <h3>MATERNO</h3>
+
+            <p>
+                Información de gestantes por microred.
+            </p>
+
+        </div>
+
+
+        <div class="curso-card"
+             data-curso="nino">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-child"></i>
+
+            </div>
+
+            <h3>NIÑO</h3>
+
+            <p>
+                Información correspondiente al curso de vida niño.
+            </p>
+
+        </div>
+
+
+        <div class="curso-card"
+             data-curso="adolescente">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-user-graduate"></i>
+
+            </div>
+
+            <h3>ADOLESCENTE</h3>
+
+            <p>
+                Información correspondiente al curso de vida adolescente.
+            </p>
+
+        </div>
+
+
+        <div class="curso-card"
+             data-curso="joven">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-person"></i>
+
+            </div>
+
+            <h3>JOVEN</h3>
+
+            <p>
+                Información correspondiente al curso de vida joven.
+            </p>
+
+        </div>
+
+
+        <div class="curso-card"
+             data-curso="adulto">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-user"></i>
+
+            </div>
+
+            <h3>ADULTO</h3>
+
+            <p>
+                Información correspondiente al curso de vida adulto.
+            </p>
+
+        </div>
+
+
+        <div class="curso-card"
+             data-curso="adultoMayor">
+
+            <div class="curso-icon">
+
+                <i class="fas fa-person-cane"></i>
+
+            </div>
+
+            <h3>ADULTO MAYOR</h3>
+
+            <p>
+                Información correspondiente al curso de vida adulto mayor.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         EDITOR
+    ================================================= -->
+
+    <div class="editor" id="editor">
+
+
+        <div class="editor-title">
+
+            <h3 id="tituloEditor">
+                MATERNO
+            </h3>
+
+
+            <button
+                class="btn-cerrar"
+                id="cerrarEditor"
+                title="Cerrar">
+
+                <i class="fas fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FECHA -->
+
+        <div class="fecha-box">
+
+            <label for="fechaActualizacion">
+
+                <i class="fas fa-calendar-days"></i>
+
+                Fecha de última actualización
+
+            </label>
+
+
+            <input
+                type="date"
+                id="fechaActualizacion">
+
+        </div>
+
+
+
+        <!-- TABLA -->
+
+        <div class="tabla-container">
+
+            <table class="tabla-microredes">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Microred
+                        </th>
+
+                        <th>
+                            Cantidad
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tablaMicroredes">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- GUARDAR -->
+
+        <div class="guardar-container">
+
+            <button
+                type="button"
+                class="btn-guardar"
+                id="btnGuardar">
+
+                <i class="fas fa-floppy-disk"></i>
+
+                Guardar cambios
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     MENSAJE
+===================================================== -->
+
+<div
+    class="mensaje"
+    id="mensaje">
+
+    <i class="fas fa-check-circle"></i>
+
+    <span id="mensajeTexto">
+        Cambios guardados correctamente.
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE + JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import {
+    auth,
+    db
+} from "./firebase-config.js";
+
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+    doc,
+    getDoc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+/* =====================================================
+   MICROREDES
+===================================================== */
+
+const microredes = [
+    "Pallán",
+    "Sorochuco",
+    "Cortegana",
+    "Huasmin",
+    "Sucre",
+    "Hospital de Apoyo",
+    "Miguel Iglesias",
+    "No pertenece"
+];
+
+
+
+/* =====================================================
+   CURSOS
+===================================================== */
+
+const nombresCursos = {
+
+    materno: "MATERNO",
+
+    nino: "NIÑO",
+
+    adolescente: "ADOLESCENTE",
+
+    joven: "JOVEN",
+
+    adulto: "ADULTO",
+
+    adultoMayor: "ADULTO MAYOR"
+
+};
+
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let cursoSeleccionado = null;
+
+
+const editor =
+    document.getElementById("editor");
+
+
+const tituloEditor =
+    document.getElementById("tituloEditor");
+
+
+const fechaActualizacion =
+    document.getElementById("fechaActualizacion");
+
+
+const tablaMicroredes =
+    document.getElementById("tablaMicroredes");
+
+
+const btnGuardar =
+    document.getElementById("btnGuardar");
+
+
+const mensaje =
+    document.getElementById("mensaje");
+
+
+const mensajeTexto =
+    document.getElementById("mensajeTexto");
+
+
+const usuarioEmail =
+    document.getElementById("usuarioEmail");
+
+
+
+/* =====================================================
+   VERIFICAR USUARIO
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    function(user) {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        usuarioEmail.textContent =
+            user.email;
+
+    }
+);
+
+
+
+/* =====================================================
+   MENU RESPONSIVE
+===================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+
+const nav =
+    document.querySelector("header nav");
+
+
+menuToggle.addEventListener(
+    "click",
+    function() {
+
+        nav.classList.toggle(
+            "menuAbierto"
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   CERRAR SESIÓN
+===================================================== */
+
+document
+    .getElementById("cerrarSesion")
+    .addEventListener(
+        "click",
+        async function(e) {
+
+            e.preventDefault();
+
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            }
+            catch(error) {
+
+                console.error(error);
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   CREAR TABLA
+===================================================== */
+
+function crearTabla(datos = {}) {
+
+
+    tablaMicroredes.innerHTML = "";
+
+
+    microredes.forEach(
+        function(microred) {
+
+
+            const tr =
+                document.createElement("tr");
+
+
+            const tdNombre =
+                document.createElement("td");
+
+
+            tdNombre.className =
+                "nombre-microred";
+
+
+            tdNombre.textContent =
+                microred;
+
+
+            const tdCantidad =
+                document.createElement("td");
+
+
+            const input =
+                document.createElement("input");
+
+
+            input.type =
+                "number";
+
+
+            input.min =
+                "0";
+
+
+            input.step =
+                "1";
+
+
+            input.className =
+                "cantidad-input";
+
+
+            input.dataset.microred =
+                microred;
+
+
+            input.value =
+                datos[microred] ?? 0;
+
+
+            tdCantidad.appendChild(
+                input
+            );
+
+
+            tr.appendChild(
+                tdNombre
+            );
+
+
+            tr.appendChild(
+                tdCantidad
+            );
+
+
+            tablaMicroredes.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SELECCIONAR CURSO
+===================================================== */
+
+document
+    .querySelectorAll(".curso-card")
+    .forEach(
+        function(card) {
+
+
+            card.addEventListener(
+                "click",
+                async function() {
+
+
+                    cursoSeleccionado =
+                        card.dataset.curso;
+
+
+                    tituloEditor.textContent =
+                        nombresCursos[
+                            cursoSeleccionado
+                        ];
+
+
+                    editor.classList.add(
+                        "visible"
+                    );
+
+
+                    editor.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+
+                    await cargarDatos();
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   CERRAR EDITOR
+===================================================== */
+
+document
+    .getElementById("cerrarEditor")
+    .addEventListener(
+        "click",
+        function() {
+
+            editor.classList.remove(
+                "visible"
+            );
+
+
+            cursoSeleccionado =
+                null;
+
+        }
+    );
+
+
+
+/* =====================================================
+   CARGAR DATOS
+===================================================== */
+
+async function cargarDatos() {
+
+
+    if (!cursoSeleccionado)
+        return;
+
+
+    try {
+
+
+        const referencia =
+            doc(
+                db,
+                "cursosVida",
+                cursoSeleccionado
+            );
+
+
+        const resultado =
+            await getDoc(
+                referencia
+            );
+
+
+        if (resultado.exists()) {
+
+
+            const datos =
+                resultado.data();
+
+
+            fechaActualizacion.value =
+                datos.fechaActualizacion || "";
+
+
+            crearTabla(
+                datos.microredes || {}
+            );
+
+
+        }
+        else {
+
+
+            fechaActualizacion.value =
+                obtenerFechaHoy();
+
+
+            crearTabla();
+
+        }
+
+
+    }
+    catch(error) {
+
+
+        console.error(
+            "Error al cargar:",
+            error
+        );
+
+
+        crearTabla();
+
+
+        fechaActualizacion.value =
+            obtenerFechaHoy();
+
+
+        mostrarMensaje(
+            "No se pudieron cargar los datos de Firebase.",
+            true
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FECHA
+===================================================== */
+
+function obtenerFechaHoy() {
+
+
+    const hoy =
+        new Date();
+
+
+    const year =
+        hoy.getFullYear();
+
+
+    const month =
+        String(
+            hoy.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            hoy.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+
+/* =====================================================
+   GUARDAR DATOS
+===================================================== */
+
+btnGuardar.addEventListener(
+    "click",
+    async function() {
+
+
+        if (!cursoSeleccionado) {
+
+            mostrarMensaje(
+                "Selecciona primero un curso de vida.",
+                true
+            );
+
+            return;
+
+        }
+
+
+
+        /*
+         * Evitamos múltiples clics
+         */
+
+        if (btnGuardar.disabled) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Cambiamos el botón
+         */
+
+        btnGuardar.disabled =
+            true;
+
+
+        btnGuardar.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+
+
+
+        try {
+
+
+            /* -----------------------------------------
+               OBTENER CANTIDADES
+            ----------------------------------------- */
+
+            const inputs =
+                document.querySelectorAll(
+                    ".cantidad-input"
+                );
+
+
+            const datosMicroredes = {};
+
+
+
+            inputs.forEach(
+                function(input) {
+
+
+                    let valor =
+                        Number(
+                            input.value
+                        );
+
+
+                    if (
+                        !Number.isFinite(valor) ||
+                        valor < 0
+                    ) {
+
+                        valor = 0;
+
+                    }
+
+
+                    valor =
+                        Math.floor(valor);
+
+
+                    datosMicroredes[
+                        input.dataset.microred
+                    ] = valor;
+
+                }
+            );
+
+
+
+            /* -----------------------------------------
+               FECHA
+            ----------------------------------------- */
+
+            const fecha =
+                fechaActualizacion.value ||
+                obtenerFechaHoy();
+
+
+
+            /*
+             * -----------------------------------------
+             * GUARDAR EN FIRESTORE
+             * -----------------------------------------
+             */
+
+            const referencia =
+                doc(
+                    db,
+                    "cursosVida",
+                    cursoSeleccionado
+                );
+
+
+
+            await guardarConTiempoMaximo(
+                referencia,
+                {
+                    fechaActualizacion: fecha,
+                    microredes: datosMicroredes
+                }
+            );
+
+
+
+            /*
+             * ÉXITO
+             */
+
+            mostrarMensaje(
+                "Cambios guardados correctamente.",
+                false
+            );
+
+
+        }
+        catch(error) {
+
+
+            console.error(
+                "ERROR FIREBASE:",
+                error
+            );
+
+
+            let textoError =
+                "No se pudieron guardar los cambios.";
+
+
+            if (
+                error &&
+                error.code ===
+                "permission-denied"
+            ) {
+
+                textoError =
+                    "Firebase rechazó el guardado. Revisa las reglas de Firestore.";
+
+            }
+
+
+            if (
+                error &&
+                error.message &&
+                error.message.includes(
+                    "timeout"
+                )
+            ) {
+
+                textoError =
+                    "Firebase está tardando demasiado en responder.";
+
+            }
+
+
+            mostrarMensaje(
+                textoError,
+                true
+            );
+
+
+        }
+        finally {
+
+
+            /*
+             * ESTO ES MUY IMPORTANTE:
+             *
+             * SIEMPRE devolvemos el botón
+             * a su estado original.
+             */
+
+            btnGuardar.disabled =
+                false;
+
+
+            btnGuardar.innerHTML =
+                '<i class="fas fa-floppy-disk"></i> Guardar cambios';
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   GUARDADO CON TIEMPO MÁXIMO
+===================================================== */
+
+function guardarConTiempoMaximo(
+    referencia,
+    datos
+) {
+
+
+    return new Promise(
+        function(resolve, reject) {
+
+
+            let terminado =
+                false;
+
+
+            const temporizador =
+                setTimeout(
+                    function() {
+
+
+                        if (terminado)
+                            return;
+
+
+                        terminado = true;
+
+
+                        reject(
+                            new Error(
+                                "timeout"
+                            )
+                        );
+
+
+                    },
+                    10000
+                );
+
+
+
+            setDoc(
+                referencia,
+                datos,
+                {
+                    merge: true
+                }
+            )
+            .then(
+                function(resultado) {
+
+
+                    if (terminado)
+                        return;
+
+
+                    terminado = true;
+
+
+                    clearTimeout(
+                        temporizador
+                    );
+
+
+                    resolve(
+                        resultado
+                    );
+
+                }
+            )
+            .catch(
+                function(error) {
+
+
+                    if (terminado)
+                        return;
+
+
+                    terminado = true;
+
+
+                    clearTimeout(
+                        temporizador
+                    );
+
+
+                    reject(
+                        error
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+function mostrarMensaje(
+    texto,
+    esError = false
+) {
+
+
+    mensajeTexto.textContent =
+        texto;
+
+
+    mensaje.classList.toggle(
+        "error",
+        esError
+    );
+
+
+    mensaje.style.display =
+        "block";
+
+
+    setTimeout(
+        function() {
+
+            mensaje.style.display =
+                "none";
+
+        },
+        4000
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

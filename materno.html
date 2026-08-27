@@ -488,60 +488,36 @@
         </p>
 
     </section>
-<!-- Section de Indicadores 
+<!-- INDICADORES -->
     <section>
-
         <div class="encabezadoSeccion">
-
             <div class="fechaActualizacion">
                 Fecha de última actualización:
-                <strong>10/08/2026</strong>
+                <strong id="fechaIndicadores">Cargando...</strong>
             </div>
-
             <h2 class="titulo">Indicadores Maternos</h2>
-
         </div>
-
-
 
         <p class="subtitulo">
             Información consolidada de todas las microredes.
         </p>
 
         <div class="gridIndicadores">
-
             <div class="indicador">
-                <h3>1258</h3>
+                <h3 id="totalGestantes">--</h3>
                 <p>Gestantes Registradas</p>
             </div>
+        </div>
+    </section>
 
-            <div class="indicador">
-                <h3>6845</h3>
-                <p>Controles Prenatales</p>
-            </div>
-
-            <div class="indicador">
-                <h3>97%</h3>
-                <p>Partos Institucionales</p>
-            </div>
-
-            <div class="indicador">
-                <h3>152</h3>
-                <p>Gestantes con Anemia</p>
-            </div>
-
+    <!-- MICROREDES -->
+    <section class="microredes">
+        <div class="fechaActualizacion">
+            Fecha de última actualización:
+            <strong id="fechaMicroredes">Cargando...</strong>
         </div>
 
-    </section>
-     -->
-    <section class="microredes">
- <div class="fechaActualizacion">
-                Fecha de última actualización:
-                <strong>20/08/2026</strong>
-            </div>
-        <h2 class="titulo">
-            Gestantes por Microred
-        </h2>
+        <h2 class="titulo">Gestantes por Microred</h2>
 
         <p class="subtitulo">
             Distribución referencial de gestantes registradas
@@ -552,50 +528,13 @@
             <canvas id="graficoMaterno"></canvas>
         </div>
 
-        <div class="tablaMicroredes">
-
+        <div class="tablaMicroredes" id="tablaMicroredes">
             <div class="microItem">
-                <span>La Libertad de Pallán</span>
-                <span>26</span>
+                <span>Cargando datos...</span>
+                <span>--</span>
             </div>
-
-            <div class="microItem">
-                <span>Sorochuco</span>
-                <span>45</span>
-            </div>
-
-            <div class="microItem">
-                <span>Cortegana</span>
-                <span>31</span>
-            </div>
-
-            <div class="microItem">
-                <span>Huasmín</span>
-                <span>52</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sucre</span>
-                <span>79</span>
-            </div>
-            <div class="microItem">
-                <span>De Apoyo Celendín</span>
-                <span>0</span>
-            </div>
-
-            <div class="microItem">
-                <span>Miguel Iglesias</span>
-                <span>35</span>
-            </div>
-            <div class="microItem">
-                <span>No Pertenece a Ninguna Microred</span>
-                <span>38</span>
-            </div>
-
         </div>
-
     </section>
-
 
 
     <section class="cartilla">
@@ -825,97 +764,179 @@
         }
 
     </script>
-    <script>
+    <script type="module">
+        import { db } from "./firebase-config.js";
+        import {
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-        const ctx =
-            document.getElementById('graficoMaterno');
+        const ordenMicroredes = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmín",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-        new Chart(ctx, {
+        const etiquetasGrafico = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmín",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-            type: 'bar',
+        let graficoMaterno = null;
 
-            data: {
+        function normalizar(texto) {
+            return String(texto ?? "")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .replace(/\s+/g, " ")
+                .trim();
+        }
 
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'De Apoyo Celendín',
-                    'Miguel Iglesias',
-                    'No Pertenece'
-                ],
+        function obtenerValor(microredes, nombre) {
+            if (!microredes || typeof microredes !== "object") return 0;
 
-                datasets: [{
-
-                    label: 'Gestantes Registradas',
-
-                    data: [
-                        26,
-                        45,
-                        31,
-                        52,
-                        79,
-                        0,
-                        35,
-                        38
-                    ],
-
-                    backgroundColor: [
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)',
-                        'rgba(182, 56, 161, 0.75)'
-                    ],
-
-                    borderRadius: 10
-
-                }]
-
-            },
-
-            options: {
-
-                responsive: true,
-
-                plugins: {
-
-                    legend: {
-                        display: false
-                    },
-
-                    title: {
-                        display: true,
-                        text: 'Gestantes por Microred'
-                    }
-
-                },
-
-                scales: {
-
-                    y: {
-
-                        beginAtZero: true,
-
-                        title: {
-                            display: true,
-                            text: 'Cantidad'
-                        }
-
-                    }
-
-                }
-
+            if (microredes[nombre] !== undefined) {
+                return Number(microredes[nombre]) || 0;
             }
 
-        });
+            const objetivo = normalizar(nombre);
+            const clave = Object.keys(microredes).find(
+                key => normalizar(key) === objetivo
+            );
 
+            return clave !== undefined
+                ? Number(microredes[clave]) || 0
+                : 0;
+        }
+
+        function crearTabla(microredes) {
+            const tabla = document.getElementById("tablaMicroredes");
+            tabla.innerHTML = "";
+
+            ordenMicroredes.forEach(nombre => {
+                const item = document.createElement("div");
+                item.className = "microItem";
+
+                const nombreElemento = document.createElement("span");
+                nombreElemento.textContent = nombre;
+
+                const valorElemento = document.createElement("span");
+                valorElemento.textContent = obtenerValor(microredes, nombre);
+
+                item.appendChild(nombreElemento);
+                item.appendChild(valorElemento);
+                tabla.appendChild(item);
+            });
+        }
+
+        function crearGrafico(microredes) {
+            const valores = ordenMicroredes.map(
+                nombre => obtenerValor(microredes, nombre)
+            );
+
+            const ctx = document.getElementById("graficoMaterno");
+
+            if (graficoMaterno) {
+                graficoMaterno.destroy();
+            }
+
+            graficoMaterno = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: etiquetasGrafico,
+                    datasets: [{
+                        label: "Gestantes Registradas",
+                        data: valores,
+                        backgroundColor: "rgba(182, 56, 161, 0.75)",
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: "Gestantes por Microred"
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            },
+                            title: {
+                                display: true,
+                                text: "Cantidad"
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function cargarMaterno() {
+            try {
+                const referencia = doc(db, "cursosVida", "materno");
+                const resultado = await getDoc(referencia);
+
+                if (!resultado.exists()) {
+                    throw new Error("No existe el documento cursosVida/materno en Firestore.");
+                }
+
+                const datos = resultado.data();
+                const microredes = datos.microredes || {};
+                const fecha = datos.fechaActualizacion || "Sin registrar";
+
+                const valores = ordenMicroredes.map(
+                    nombre => obtenerValor(microredes, nombre)
+                );
+
+                const total = valores.reduce(
+                    (suma, valor) => suma + valor,
+                    0
+                );
+
+                document.getElementById("totalGestantes").textContent = total;
+                document.getElementById("fechaIndicadores").textContent = fecha;
+                document.getElementById("fechaMicroredes").textContent = fecha;
+
+                crearGrafico(microredes);
+                crearTabla(microredes);
+
+            } catch (error) {
+                console.error("Error cargando MATERNO desde Firebase:", error);
+
+                document.getElementById("totalGestantes").textContent = "—";
+                document.getElementById("fechaIndicadores").textContent = "No disponible";
+                document.getElementById("fechaMicroredes").textContent = "No disponible";
+
+                document.getElementById("tablaMicroredes").innerHTML = `
+                    <div class="microItem" style="grid-column: 1 / -1; justify-content: center;">
+                        <span>No se pudieron cargar los datos desde Firebase.</span>
+                    </div>
+                `;
+            }
+        }
+
+        cargarMaterno();
     </script>
+
     <script>
 
         const menuToggle =
