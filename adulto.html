@@ -489,51 +489,26 @@
 
     </section>
 
-    <!--
+    <!-- INDICADORES -->
     <section>
-
         <div class="encabezadoSeccion">
-
             <div class="fechaActualizacion">
                 Fecha de última actualización:
-                <strong>10/08/2026</strong>
+                <strong id="fechaIndicadores">Cargando...</strong>
             </div>
-
-            <h2 class="titulo">Indicadores del Curso De Vida Adulto</h2>
-
+            <h2 class="titulo">Indicadores del Curso de Vida Adulto</h2>
         </div>
-
-
         <div class="gridIndicadores">
-
             <div class="indicador">
-                <h3>4820</h3>
+                <h3 id="totalAdultos">--</h3>
                 <p>Adultos Registrados</p>
             </div>
-
-            <div class="indicador">
-                <h3>635</h3>
-                <p>Hipertensión</p>
-            </div>
-
-            <div class="indicador">
-                <h3>412</h3>
-                <p>Diabetes</p>
-            </div>
-
-            <div class="indicador">
-                <h3>3250</h3>
-                <p>Tamizajes Realizados</p>
-            </div>
-
         </div>
-
     </section>
-    -->
     <section class="microredes">
         <div class="fechaActualizacion">
             Fecha de última actualización:
-            <strong>10/08/2026</strong>
+            <strong id="fechaMicroredes">Cargando...</strong>
         </div>
         <h2 class="titulo">
             Adultos por Microred
@@ -549,47 +524,11 @@
             <canvas id="graficoAdulto"></canvas>
         </div>
 
-        <div class="tablaMicroredes">
+        <div class="tablaMicroredes" id="tablaMicroredes">
+            <!-- Datos cargados automáticamente desde Firebase -->
+        </div>
 
-            <div class="microItem">
-                <span>La Libertad de Pallán</span>
-                <span>607</span>
-            </div>
 
-            <div class="microItem">
-                <span>Sorochuco</span>
-                <span>3445</span>
-            </div>
-
-            <div class="microItem">
-                <span>Cortegana</span>
-                <span>1498</span>
-            </div>
-
-            <div class="microItem">
-                <span>Huasmín</span>
-                <span>607</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sucre</span>
-                <span>5077</span>
-            </div>
-
-            <div class="microItem">
-                <span>Miguel Iglesias</span>
-                <span>1453</span>
-            </div>
-
-            <div class="microItem">
-                <span>De Apoyo Celendín</span>
-                <span>4557</span>
-            </div>
-
-            <div class="microItem">
-                <span>No Pertenece a Ninguna Microred</span>
-                <span>515</span>
-            </div>
 
         </div>
 
@@ -688,64 +627,113 @@
     </footer>
 
 
-    <script>
+    <script type="module">
 
-        const ctx =
-            document.getElementById('graficoAdulto');
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { db } from "./firebase-config.js";
 
-        new Chart(ctx, {
+        const microredes = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmin",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-            type: 'bar',
+        function normalizar(texto) {
+            return String(texto).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+        }
 
-            data: {
+        function obtenerValor(datos, nombre) {
+            if (!datos || typeof datos !== "object") return 0;
+            if (datos[nombre] !== undefined) return Number(datos[nombre]) || 0;
+            const buscado = normalizar(nombre);
+            const clave = Object.keys(datos).find(k => normalizar(k) === buscado);
+            return clave !== undefined ? Number(datos[clave]) || 0 : 0;
+        }
 
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'Miguel Iglesias',
-                    'De Apoyo Celendín',
-                    'José Gálvez'
-                ],
+        let graficoAdulto = null;
 
-                datasets: [{
+        function mostrarDatos(datosMicroredes, fecha) {
+            const valores = microredes.map(m => obtenerValor(datosMicroredes, m));
+            const total = valores.reduce((suma, valor) => suma + valor, 0);
 
-                    label: 'Adultos Registrados',
+            document.getElementById("totalAdultos").textContent = total;
+            document.getElementById("fechaIndicadores").textContent = fecha || "Sin registrar";
+            document.getElementById("fechaMicroredes").textContent = fecha || "Sin registrar";
 
-                    data: [
-                        607,
-                        3445,
-                        1498,
-                        607,
-                        5077,
-                        1453,
-                        4557,
-                        515
-                    ],
+            const tabla = document.getElementById("tablaMicroredes");
+            tabla.innerHTML = "";
 
-                    backgroundColor: '#16a34a',
+            microredes.forEach((nombre, indice) => {
+                const item = document.createElement("div");
+                item.className = "microItem";
 
-                    borderRadius: 10
+                const nombreElemento = document.createElement("span");
+                nombreElemento.textContent = nombre;
 
-                }]
+                const valorElemento = document.createElement("span");
+                valorElemento.textContent = valores[indice];
 
-            },
+                item.appendChild(nombreElemento);
+                item.appendChild(valorElemento);
+                tabla.appendChild(item);
+            });
 
-            options: {
+            const canvas = document.getElementById("graficoAdulto");
+            if (!canvas) return;
+            if (graficoAdulto) graficoAdulto.destroy();
 
-                responsive: true,
+            graficoAdulto = new Chart(canvas, {
+                type: "bar",
+                data: {
+                    labels: microredes,
+                    datasets: [{
+                        label: "Adultos Registrados",
+                        data: valores,
+                        backgroundColor: "#16a34a",
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
 
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+        async function cargarAdulto() {
+            try {
+                const referencia = doc(db, "cursosVida", "adulto");
+                const resultado = await getDoc(referencia);
+
+                if (!resultado.exists()) {
+                    throw new Error("No existe el documento cursosVida/adulto.");
                 }
 
-            }
+                const datos = resultado.data();
+                mostrarDatos(datos.microredes || {}, datos.fechaActualizacion || "");
+            } catch (error) {
+                console.error("Error cargando datos de Adulto:", error);
+                document.getElementById("totalAdultos").textContent = "—";
+                document.getElementById("fechaIndicadores").textContent = "No disponible";
+                document.getElementById("fechaMicroredes").textContent = "No disponible";
 
-        });
+                const tabla = document.getElementById("tablaMicroredes");
+                if (tabla) {
+                    tabla.innerHTML = `
+                        <div style="grid-column:1/-1;text-align:center;padding:25px;color:#64748b;background:white;border-radius:18px;">
+                            No se pudieron cargar los datos desde Firebase.
+                        </div>`;
+                }
+            }
+        }
+
+        cargarAdulto();
 
     </script>
     <script>

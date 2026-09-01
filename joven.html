@@ -2,7 +2,9 @@
 <html lang="es">
 
 <head>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,11 +15,15 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
+
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -38,282 +44,516 @@
             list-style: none;
         }
 
-        /* HEADER */
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+
             background: rgba(255, 255, 255, .96);
+
             backdrop-filter: blur(10px);
+
             box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 12px 6%;
+
             z-index: 9999;
         }
+
 
         .logo {
             height: 60px;
         }
 
+
         .TituloPequeno {
             font-size: 1.2rem;
+
             font-weight: 700;
+
             color: #0f4c81;
+
             flex: 1;
+
             margin-left: 15px;
         }
 
+
         .menu {
             display: flex;
+
             align-items: center;
+
             gap: 28px;
         }
 
+
         .menu a {
             color: #1e3a8a;
+
             font-weight: 600;
+
             transition: .3s;
         }
+
 
         .menu a:hover,
         .menu .activo {
             color: #16a34a;
         }
 
+
         .menu .fa {
             font-size: 1.2rem;
         }
 
-        /* HERO */
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
+
             margin-top: 84px;
+
             height: 60vh;
 
             background:
-                linear-gradient(rgba(8, 145, 178, .85),
-                    rgba(6, 182, 212, .75)),
+
+                linear-gradient(
+                    rgba(8, 145, 178, .85),
+                    rgba(6, 182, 212, .75)
+                ),
+
                 url("Imagenes/joven.jpg");
 
             background-size: cover;
+
             background-position: center;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
+
             align-items: center;
+
             text-align: center;
+
             color: white;
+
             padding: 20px;
         }
 
+
         .hero h1 {
+
             font-size: 4rem;
+
             margin-bottom: 20px;
         }
 
+
         .hero p {
+
             max-width: 900px;
+
             font-size: 1.1rem;
+
             background: rgba(255, 255, 255, .12);
+
             padding: 25px;
+
             border-radius: 20px;
         }
 
-        /* TITULOS */
+
+        /* =====================================================
+           TITULOS
+        ===================================================== */
 
         .titulo {
+
             text-align: center;
+
             font-size: 2.5rem;
+
             color: #0f4c81;
+
             margin-bottom: 20px;
         }
 
+
         .subtitulo {
+
             text-align: center;
+
             max-width: 800px;
+
             margin: auto;
+
             color: #64748b;
+
             margin-bottom: 50px;
         }
 
-        /* CONTENEDORES */
+
+        /* =====================================================
+           SECCIONES
+        ===================================================== */
 
         section {
+
             padding: 80px 8%;
         }
 
-        /* INDICADORES */
+
+        /* =====================================================
+           INDICADORES
+        ===================================================== */
 
         .gridIndicadores {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
             gap: 25px;
         }
 
+
         .indicador {
+
             background: white;
+
             padding: 35px;
+
             border-radius: 25px;
+
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, .08);
+
             transition: .3s;
         }
 
+
         .indicador:hover {
+
             transform: translateY(-10px);
         }
 
+
         .indicador h3 {
+
             font-size: 3rem;
+
             color: rgba(6, 182, 212, .75);
         }
 
+
         .indicador p {
+
             margin-top: 10px;
+
             font-weight: 600;
         }
 
-        /* MICROREDES */
+
+        /* =====================================================
+           MICROREDES
+        ===================================================== */
 
         .microredes {
+
             background: #eef7ff;
         }
 
+
         .tablaMicroredes {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
             gap: 20px;
+
             margin-top: 40px;
         }
 
+
         .microItem {
+
             background: white;
+
             padding: 20px;
+
             border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, .08);
+
             transition: .3s;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
+
         .microItem:hover {
+
             transform: translateY(-5px);
         }
 
+
         .microItem span:first-child {
+
             color: #0f4c81;
+
             font-weight: 600;
         }
 
+
         .microItem span:last-child {
+
             color: rgba(6, 182, 212, .75);
+
             font-size: 1.4rem;
+
             font-weight: 700;
         }
 
 
-
-
-        /* CARTILLA */
+        /* =====================================================
+           CARTILLA
+        ===================================================== */
 
         .cartilla {
-            background: linear-gradient(135deg,
+
+            background:
+
+                linear-gradient(
+                    135deg,
                     #eef7ff,
-                    #f0fdf4);
+                    #f0fdf4
+                );
+
             text-align: center;
         }
 
+
         .btnDescargar {
+
             display: inline-block;
+
             margin-top: 20px;
+
             padding: 15px 30px;
-            background: rgba(6, 182, 212, .75);
+
+            background:
+                rgba(6, 182, 212, .75);
+
             color: white;
+
             border-radius: 10px;
+
             font-weight: 600;
+
             transition: .3s;
         }
 
+
         .btnDescargar:hover {
+
             background: #0f4c81;
         }
 
+
         .imagenCartilla {
+
             margin-top: 40px;
+
             width: 100%;
+
             max-width: 1100px;
+
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, .15);
+
             cursor: pointer;
         }
 
 
-        /* FOOTER */
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
-            background: rgba(6, 182, 212, .75);
+
+            background:
+                rgba(6, 182, 212, .75);
+
             color: #cbd5e1;
+
             padding: 60px 8% 20px;
         }
 
+
         .footerGrid {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
             gap: 30px;
         }
 
+
         footer h3 {
+
             color: white;
+
             margin-bottom: 15px;
         }
 
+
         footer a {
+
             color: #cbd5e1;
         }
 
+
         footer a:hover {
+
             color: #4ade80;
         }
 
+
         .copyright {
+
             text-align: center;
+
             margin-top: 30px;
+
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, .1);
+
+            border-top:
+                1px solid rgba(255, 255, 255, .1);
         }
 
-        /* RESPONSIVE */
 
-        /* RESPONSIVE */
-        /* Menu Toggle */
+        /* =====================================================
+           MENU RESPONSIVE
+        ===================================================== */
+
         .menuToggle {
+
             display: none;
 
             border: none;
+
             background: none;
 
             font-size: 2rem;
+
             color: #0f4c81;
 
             cursor: pointer;
         }
 
-        /* RESPONSIVE */
+
+        /* =====================================================
+           GRAFICO
+        ===================================================== */
+
+        .contenedorGrafico {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, .08);
+        }
+
+
+        /* =====================================================
+           ENCABEZADO Y FECHA
+        ===================================================== */
+
+        .encabezadoSeccion {
+
+            position: relative;
+
+            margin-bottom: 40px;
+
+            text-align: center;
+        }
+
+
+        .encabezadoSeccion .titulo {
+
+            margin: 0;
+
+            text-align: center;
+        }
+
+
+        .fechaActualizacion {
+
+            text-align: right;
+
+            color: #64748b;
+
+            font-size: .82rem;
+
+            margin-bottom: 8px;
+        }
+
+
+        .fechaActualizacion strong {
+
+            color: #0f4c81;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
 
         @media(max-width:768px) {
 
-            /* =========================
-       HEADER EN CELULAR
-    ========================= */
 
             header {
+
                 height: 70px;
 
                 flex-direction: row;
@@ -323,25 +563,33 @@
                 gap: 10px;
             }
 
+
             .logo {
+
                 height: 48px;
+
                 width: auto;
+
                 object-fit: contain;
             }
 
+
             .TituloPequeno {
+
                 font-size: .95rem;
 
                 margin-left: 5px;
 
                 white-space: nowrap;
+
                 overflow: hidden;
+
                 text-overflow: ellipsis;
             }
 
 
-
             .menuToggle {
+
                 display: block;
 
                 margin-left: auto;
@@ -349,6 +597,7 @@
                 flex-shrink: 0;
 
                 border: none;
+
                 background: none;
 
                 font-size: 2rem;
@@ -358,416 +607,1075 @@
                 cursor: pointer;
             }
 
-            /* MENÚ */
+
             nav {
+
                 position: absolute;
+
                 top: 70px;
+
                 left: 0;
+
                 width: 100%;
+
                 background: white;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, .10);
+
+                box-shadow:
+                    0 10px 25px rgba(0, 0, 0, .10);
+
                 display: none;
             }
 
+
             nav.menuAbierto {
+
                 display: block;
             }
 
+
             .menu {
+
                 flex-direction: column;
+
                 align-items: stretch;
+
                 gap: 0;
+
                 padding: 10px 0;
             }
 
+
             .menu li {
+
                 width: 100%;
             }
 
+
             .menu a {
+
                 display: block;
+
                 width: 100%;
+
                 text-align: center;
+
                 padding: 13px 20px;
+
                 font-size: .95rem;
             }
 
+
             .menu a:hover {
+
                 background: #f0fdf4;
             }
 
+
             .hero h1 {
+
                 font-size: 2.5rem;
             }
 
-            .slide img {
-                height: 300px;
+
+            .hero {
+
+                margin-top: 70px;
+
+                height: 60vh;
             }
 
-        }
-
-
-
-
-        .contenedorGrafico {
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-        }
-
-
-        .encabezadoSeccion {
-            position: relative;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .encabezadoSeccion .titulo {
-            margin: 0;
-            text-align: center;
-        }
-
-        .fechaActualizacion {
-            text-align: right;
-            color: #64748b;
-            font-size: .82rem;
-            margin-bottom: 8px;
-        }
-
-        .fechaActualizacion strong {
-            color: #0f4c81;
-            font-weight: 600;
-        }
-
-        @media(max-width:768px) {
 
             .fechaActualizacion {
+
                 text-align: center;
+
                 margin-bottom: 10px;
             }
 
+
+            .contenedorGrafico {
+
+                padding: 15px;
+            }
+
+
+            section {
+
+                padding: 60px 5%;
+            }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
 
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
     <header>
 
         <a href="index.html">
-            <img src="Imagenes/logo.jpg" class="logo">
+
+            <img
+                src="Imagenes/logo.jpg"
+                class="logo"
+                alt="Logo Red de Salud Celendín">
+
         </a>
 
+
         <div class="TituloPequeno">
+
             Red de Salud Celendín
+
         </div>
-        <button class="menuToggle" id="menuToggle">
+
+
+        <button
+            class="menuToggle"
+            id="menuToggle"
+            aria-label="Abrir menú">
+
             <i class='bx bx-menu'></i>
+
         </button>
 
+
         <nav>
+
             <ul class="menu">
 
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="cursosVida.html">Cursos de Vida</a></li>
-                <li><a href="joven.html" class="activo">Joven</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="cursosVida.html">
+                        Cursos de Vida
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="joven.html"
+                        class="activo">
+
+                        Joven
+
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
 
             </ul>
+
         </nav>
 
     </header>
 
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
     <section class="hero">
 
-        <h1>Curso de Vida Joven</h1>
+        <h1>
+            Curso de Vida Joven
+        </h1>
+
 
         <p>
+
             Información consolidada del Curso de Vida Joven
             de toda la Red Integrada de Salud Celendín.
+
         </p>
 
     </section>
-    <!--
+
+
+    <!-- =====================================================
+         INDICADORES
+    ===================================================== -->
+
     <section>
 
         <div class="encabezadoSeccion">
 
             <div class="fechaActualizacion">
+
                 Fecha de última actualización:
-                <strong>10/08/2026</strong>
+
+                <strong id="fechaIndicadores">
+                    Cargando...
+                </strong>
+
             </div>
 
-            <h2 class="titulo">Indicadores del Curso de Vida Joven</h2>
-
-        </div>
-
-
-
-        <div class="gridIndicadores">
-
-            <div class="indicador">
-                <h3>2140</h3>
-                <p>Jóvenes Registrados</p>
-            </div>
-
-            <div class="indicador">
-                <h3>1380</h3>
-                <p>Consejerías</p>
-            </div>
-
-            <div class="indicador">
-                <h3>1925</h3>
-                <p>Tamizajes</p>
-            </div>
-
-            <div class="indicador">
-                <h3>865</h3>
-                <p>Atenciones Integrales</p>
-            </div>
-
-        </div>
-
-    </section>
-    -->
-    <section class="microredes">
-        <div class="fechaActualizacion">
-            Fecha de última actualización:
-            <strong>20/08/2026</strong>
-        </div>
-        <h2 class="titulo">
-            Jóvenes por Microred
-        </h2>
-
-        <p class="subtitulo">
-            Distribución referencial de Adolescentes registrados
-            en las microredes de la Red de Salud Celendín.
-        </p>
-        <div class="contenedorGrafico">
-            <canvas id="graficoJoven"></canvas>
-        </div>
-
-        <div class="tablaMicroredes">
-
-            <div class="microItem">
-                <span>La Libertad dePallán</span>
-                <span>1127</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sorochuco</span>
-                <span>1694</span>
-            </div>
-
-            <div class="microItem">
-                <span>Cortegana</span>
-                <span>576</span>
-            </div>
-
-            <div class="microItem">
-                <span>Huasmín</span>
-                <span>1617</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sucre</span>
-                <span>2166</span>
-            </div>
-
-            <div class="microItem">
-                <span>Miguel Iglesias</span>
-                <span>654</span>
-            </div>
-
-            <div class="microItem">
-                <span>De Apoyo Celendín</span>
-                <span>7844</span>
-            </div>
-
-            <div class="microItem">
-                <span>No Pertenece a Ninguna Microred</span>
-                <span>465</span>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="cartilla">
-
-        <div class="encabezadoSeccion">
-
-            <div class="fechaActualizacion">
-                Fecha de última actualización:
-                <strong>05/08/2026</strong>
-            </div>
 
             <h2 class="titulo">
-                Cartilla Joven
+
+                Indicadores del Curso de Vida Joven
+
             </h2>
 
         </div>
 
 
+        <div class="gridIndicadores">
 
-        <a href="JOVEN/CARTILLA HIS DE JOVEN.xlsx" download class="btnDescargar">
 
-            <i class="fa fa-download"></i>
-            DESCARGAR CARTILLA HIS JOVEN
+            <div class="indicador">
 
-        </a>
+                <h3 id="totalJovenes">
+                    --
+                </h3>
 
-        <br><br>
+                <p>
+                    Jóvenes Registrados
+                </p>
 
-        <img src="Imagenes/CARTILLAJOVEN.png" class="imagenCartilla">
+            </div>
+
+        </div>
 
     </section>
 
 
+    <!-- =====================================================
+         MICROREDES
+    ===================================================== -->
+
+    <section class="microredes">
+
+
+        <div class="fechaActualizacion">
+
+            Fecha de última actualización:
+
+            <strong id="fechaMicroredes">
+                Cargando...
+            </strong>
+
+        </div>
+
+
+        <h2 class="titulo">
+
+            Jóvenes por Microred
+
+        </h2>
+
+
+        <p class="subtitulo">
+
+            Distribución referencial de Jóvenes registrados
+            en las microredes de la Red de Salud Celendín.
+
+        </p>
+
+
+        <div class="contenedorGrafico">
+
+            <canvas id="graficoJoven"></canvas>
+
+        </div>
+
+
+        <div
+            class="tablaMicroredes"
+            id="tablaMicroredes">
+
+            <!-- Firebase cargará aquí las microredes -->
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         CARTILLA
+    ===================================================== -->
+
+    <section class="cartilla">
+
+
+        <div class="encabezadoSeccion">
+
+
+            <div class="fechaActualizacion">
+
+                Fecha de última actualización:
+
+                <strong>
+                    05/08/2026
+                </strong>
+
+            </div>
+
+
+            <h2 class="titulo">
+
+                Cartilla Joven
+
+            </h2>
+
+
+        </div>
+
+
+        <a
+            href="JOVEN/CARTILLA HIS DE JOVEN.xlsx"
+            download
+            class="btnDescargar">
+
+            <i class="fa fa-download"></i>
+
+            DESCARGAR CARTILLA HIS JOVEN
+
+        </a>
+
+
+        <br>
+        <br>
+
+
+        <img
+            src="Imagenes/CARTILLAJOVEN.png"
+            class="imagenCartilla"
+            alt="Cartilla Joven">
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
 
     <footer>
 
+
         <div class="footerGrid">
 
+
             <div>
 
-                <h3>Red de Salud Celendín</h3>
+                <h3>
+                    Red de Salud Celendín
+                </h3>
+
 
                 <p>
+
                     Institución responsable de conducir y fortalecer
                     los servicios de salud de toda la provincia.
+
                 </p>
 
             </div>
 
+
             <div>
 
-                <h3>Contacto</h3>
+                <h3>
+                    Contacto
+                </h3>
+
 
                 <p>
+
                     <i class="fa fa-envelope"></i>
+
                     redsaludcelendin@gmail.com
+
                 </p>
 
+
                 <p>
+
                     <i class="fa fa-map-marker"></i>
+
                     Celendín - Cajamarca
+
                 </p>
 
+
                 <p>
+
                     <i class="fa fa-phone"></i>
+
                     +51 930 384 753
+
                 </p>
 
             </div>
+
 
             <div>
 
-                <h3>Síguenos</h3>
+                <h3>
+                    Síguenos
+                </h3>
+
 
                 <p>
+
                     <a href="#">
+
                         <i class="fa fa-facebook"></i>
+
                     </a>
+
                 </p>
 
+
                 <p>
+
                     <a href="#">
+
                         <i class="fa fa-whatsapp"></i>
+
                     </a>
+
                 </p>
 
             </div>
+
 
         </div>
+
 
         <div class="copyright">
-            © 2026 Red Integrada de Salud Celendín - Todos los derechos reservados.
+
+            © 2026 Red Integrada de Salud Celendín
+            - Todos los derechos reservados.
+
         </div>
+
 
     </footer>
 
 
-    <script>
+    <!-- =====================================================
+         FIREBASE + DATOS JOVEN
+    ===================================================== -->
 
-        const ctx =
-            document.getElementById('graficoJoven');
+    <script type="module">
 
-        new Chart(ctx, {
 
-            type: 'bar',
+        import {
 
-            data: {
+            doc,
 
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'Miguel Iglesias',
-                    'De Apoyo Celendín',
-                    'No Pertenece'
-                ],
+            getDoc
 
-                datasets: [{
+        } from
+            "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-                    label: 'Jóvenes Registrados',
 
-                    data: [
-                        1127,
-                        1694,
-                        576,
-                        1617,
-                        2166,
-                        654,
-                        7844,
-                        465
-                    ],
+        import {
 
-                    backgroundColor: '#0891b2',
+            db
 
-                    borderRadius: 10
+        } from "./firebase-config.js";
 
-                }]
 
-            },
+        /*
+         * =====================================================
+         * MICROREDES OFICIALES
+         * =====================================================
+         */
 
-            options: {
+        const microredes = [
 
-                responsive: true,
+            "Pallán",
 
-                plugins: {
-                    legend: {
-                        display: false
+            "Sorochuco",
+
+            "Cortegana",
+
+            "Huasmin",
+
+            "Sucre",
+
+            "Hospital de Apoyo",
+
+            "Miguel Iglesias",
+
+            "No pertenece"
+
+        ];
+
+
+        /*
+         * =====================================================
+         * NORMALIZAR TEXTO
+         * =====================================================
+         */
+
+        function normalizar(texto) {
+
+            return String(texto)
+
+                .normalize("NFD")
+
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                )
+
+                .toLowerCase()
+
+                .replace(
+                    /\s+/g,
+                    " "
+                )
+
+                .trim();
+
+        }
+
+
+        /*
+         * =====================================================
+         * OBTENER VALOR
+         * =====================================================
+         */
+
+        function obtenerValor(
+            datos,
+            nombre
+        ) {
+
+
+            if (
+                !datos ||
+                typeof datos !== "object"
+            ) {
+
+                return 0;
+
+            }
+
+
+            /*
+             * Coincidencia exacta
+             */
+
+            if (
+                datos[nombre] !== undefined
+            ) {
+
+                return Number(
+                    datos[nombre]
+                ) || 0;
+
+            }
+
+
+            /*
+             * Coincidencia ignorando
+             * tildes y mayúsculas
+             */
+
+            const buscado =
+                normalizar(nombre);
+
+
+            const clave =
+                Object.keys(datos).find(
+                    k =>
+                        normalizar(k)
+                        === buscado
+                );
+
+
+            if (
+                clave !== undefined
+            ) {
+
+                return Number(
+                    datos[clave]
+                ) || 0;
+
+            }
+
+
+            return 0;
+
+        }
+
+
+        /*
+         * =====================================================
+         * VARIABLE DEL GRÁFICO
+         * =====================================================
+         */
+
+        let graficoJoven = null;
+
+
+        /*
+         * =====================================================
+         * MOSTRAR DATOS
+         * =====================================================
+         */
+
+        function mostrarDatos(
+
+            datosMicroredes,
+
+            fecha
+
+        ) {
+
+
+            /*
+             * OBTENER VALORES
+             */
+
+            const valores =
+                microredes.map(
+                    microred =>
+                        obtenerValor(
+                            datosMicroredes,
+                            microred
+                        )
+                );
+
+
+            /*
+             * CALCULAR TOTAL
+             */
+
+            const total =
+                valores.reduce(
+                    (suma, valor) =>
+                        suma + valor,
+                    0
+                );
+
+
+            /*
+             * MOSTRAR TOTAL
+             */
+
+            document.getElementById(
+                "totalJovenes"
+            ).textContent =
+                total;
+
+
+            /*
+             * MOSTRAR FECHA
+             */
+
+            document.getElementById(
+                "fechaIndicadores"
+            ).textContent =
+                fecha ||
+                "Sin registrar";
+
+
+            document.getElementById(
+                "fechaMicroredes"
+            ).textContent =
+                fecha ||
+                "Sin registrar";
+
+
+            /*
+             * =================================================
+             * TABLA DE MICROREDES
+             * =================================================
+             */
+
+            const tabla =
+                document.getElementById(
+                    "tablaMicroredes"
+                );
+
+
+            tabla.innerHTML = "";
+
+
+            microredes.forEach(
+
+                (
+                    nombre,
+                    indice
+                ) => {
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "microItem";
+
+
+                    const nombreElemento =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    nombreElemento.textContent =
+                        nombre;
+
+
+                    const valorElemento =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    valorElemento.textContent =
+                        valores[indice];
+
+
+                    item.appendChild(
+                        nombreElemento
+                    );
+
+
+                    item.appendChild(
+                        valorElemento
+                    );
+
+
+                    tabla.appendChild(
+                        item
+                    );
+
+                }
+
+            );
+
+
+            /*
+             * =================================================
+             * GRÁFICO
+             * =================================================
+             */
+
+            const canvas =
+                document.getElementById(
+                    "graficoJoven"
+                );
+
+
+            if (!canvas) {
+
+                return;
+
+            }
+
+
+            if (graficoJoven) {
+
+                graficoJoven.destroy();
+
+            }
+
+
+            graficoJoven =
+                new Chart(
+
+                    canvas,
+
+                    {
+
+                        type: "bar",
+
+
+                        data: {
+
+                            labels:
+                                microredes,
+
+
+                            datasets: [{
+
+                                label:
+                                    "Jóvenes Registrados",
+
+
+                                data:
+                                    valores,
+
+
+                                backgroundColor:
+                                    "#0891b2",
+
+
+                                borderRadius:
+                                    10
+
+                            }]
+
+                        },
+
+
+                        options: {
+
+                            responsive: true,
+
+
+                            plugins: {
+
+                                legend: {
+
+                                    display:
+                                        false
+
+                                }
+
+                            },
+
+
+                            scales: {
+
+                                y: {
+
+                                    beginAtZero:
+                                        true
+
+                                }
+
+                            }
+
+                        }
+
                     }
+
+                );
+
+        }
+
+
+        /*
+         * =====================================================
+         * CARGAR DESDE FIREBASE
+         * =====================================================
+         */
+
+        async function cargarJoven() {
+
+
+            try {
+
+
+                const referencia =
+                    doc(
+
+                        db,
+
+                        "cursosVida",
+
+                        "joven"
+
+                    );
+
+
+                const resultado =
+                    await getDoc(
+                        referencia
+                    );
+
+
+                /*
+                 * VERIFICAR DOCUMENTO
+                 */
+
+                if (
+                    !resultado.exists()
+                ) {
+
+                    throw new Error(
+                        "No existe el documento cursosVida/joven."
+                    );
+
+                }
+
+
+                /*
+                 * OBTENER DATOS
+                 */
+
+                const datos =
+                    resultado.data();
+
+
+                /*
+                 * MICROREDES
+                 */
+
+                const datosMicroredes =
+                    datos.microredes || {};
+
+
+                /*
+                 * FECHA
+                 */
+
+                const fecha =
+                    datos.fechaActualizacion
+                    || "";
+
+
+                /*
+                 * MOSTRAR
+                 */
+
+                mostrarDatos(
+
+                    datosMicroredes,
+
+                    fecha
+
+                );
+
+
+            }
+
+            catch (error) {
+
+
+                console.error(
+
+                    "Error cargando datos de Joven:",
+
+                    error
+
+                );
+
+
+                /*
+                 * INDICADORES
+                 */
+
+                document.getElementById(
+                    "totalJovenes"
+                ).textContent =
+                    "—";
+
+
+                document.getElementById(
+                    "fechaIndicadores"
+                ).textContent =
+                    "No disponible";
+
+
+                document.getElementById(
+                    "fechaMicroredes"
+                ).textContent =
+                    "No disponible";
+
+
+                /*
+                 * TABLA
+                 */
+
+                const tabla =
+                    document.getElementById(
+                        "tablaMicroredes"
+                    );
+
+
+                if (tabla) {
+
+                    tabla.innerHTML = `
+
+                        <div style="
+                            grid-column:1/-1;
+                            text-align:center;
+                            padding:25px;
+                            color:#64748b;
+                            background:white;
+                            border-radius:18px;
+                        ">
+
+                            No se pudieron cargar
+                            los datos desde Firebase.
+
+                        </div>
+
+                    `;
+
                 }
 
             }
 
-        });
+        }
+
+
+        /*
+         * =====================================================
+         * INICIAR
+         * =====================================================
+         */
+
+        cargarJoven();
+
 
     </script>
+
+
+    <!-- =====================================================
+         MENU RESPONSIVE
+    ===================================================== -->
 
     <script>
 
+
         const menuToggle =
-            document.getElementById('menuToggle');
+            document.getElementById(
+                'menuToggle'
+            );
+
 
         const nav =
-            document.querySelector('header nav');
+            document.querySelector(
+                'header nav'
+            );
 
-        menuToggle.addEventListener('click', function () {
 
-            nav.classList.toggle('menuAbierto');
+        menuToggle.addEventListener(
+            'click',
+            function () {
 
-        });
+                nav.classList.toggle(
+                    'menuAbierto'
+                );
+
+            }
+        );
+
 
     </script>
+
+
 </body>
 
 </html>

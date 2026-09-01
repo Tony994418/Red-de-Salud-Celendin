@@ -490,25 +490,23 @@
         </p>
 
     </section>
-    <!--
     <section>
 
         <div class="encabezadoSeccion">
 
             <div class="fechaActualizacion">
                 Fecha de última actualización:
-                <strong>10/08/2026</strong>
+                <strong id="fechaIndicadores">Cargando...</strong>
             </div>
 
             <h2 class="titulo">Indicadores del Curso de Vida Adulto Mayor</h2>
 
         </div>
 
-
         <div class="gridIndicadores">
 
             <div class="indicador">
-                <h3>1860</h3>
+                <h3 id="totalAdultoMayor">--</h3>
                 <p>Adultos Mayores Registrados</p>
             </div>
 
@@ -530,14 +528,13 @@
         </div>
 
     </section>
-    -->
 
 
     <section class="microredes">
 
         <div class="fechaActualizacion">
             Fecha de última actualización:
-            <strong>20/08/2026</strong>
+            <strong id="fechaMicroredes">Cargando...</strong>
         </div>
         <h2 class="titulo">
             Adultos Mayores por Microred
@@ -552,48 +549,11 @@
         <div class="contenedorGrafico">
             <canvas id="graficoAdultoMayor"></canvas>
         </div>
-        <div class="tablaMicroredes">
+        <div class="tablaMicroredes" id="tablaMicroredes">
+            <!-- Datos cargados desde Firebase -->
+        </div>
 
-            <div class="microItem">
-                <span>La Libertad de Pallán</span>
-                <span>1021</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sorochuco</span>
-                <span>1533</span>
-            </div>
-
-            <div class="microItem">
-                <span>Cortegana</span>
-                <span>552</span>
-            </div>
-
-            <div class="microItem">
-                <span>Huasmín</span>
-                <span>466</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sucre</span>
-                <span>1148</span>
-            </div>
-
-            <div class="microItem">
-                <span>Miguel Iglesias</span>
-                <span>742</span>
-            </div>
-
-            <div class="microItem">
-                <span>De Apoyo Celendín</span>
-                <span>2636</span>
-            </div>
-
-            <div class="microItem">
-                <span>No Pertenece a Ninguna Microred</span>
-                <span>321</span>
-            </div>
-
+        
         </div>
 
     </section>
@@ -623,7 +583,7 @@
 
         <br><br>
 
-        <img src="Imagenes/cartillaAdultoMayor.jpg" class="imagenCartilla">
+        <img src="Imagenes/cartillaadultomayor.png" class="imagenCartilla">
 
     </section>
 
@@ -692,64 +652,288 @@
     </footer>
 
 
-    <script>
+    <script type="module">
 
-        const ctx =
-            document.getElementById('graficoAdultoMayor');
+        import {
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-        new Chart(ctx, {
+        import {
+            db
+        } from "./firebase-config.js";
 
-            type: 'bar',
 
-            data: {
+        const microredes = [
+            "Pallán",
+            "Sorochuco",
+            "Cortegana",
+            "Huasmin",
+            "Sucre",
+            "Hospital de Apoyo",
+            "Miguel Iglesias",
+            "No pertenece"
+        ];
 
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'Miguel Iglesias',
-                    'De Apoyo Celendín',
-                    'No Pertenece'
-                ],
 
-                datasets: [{
+        function normalizar(texto) {
 
-                    label: 'Adultos Mayores Registrados',
+            return String(texto)
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .replace(/\s+/g, " ")
+                .trim();
 
-                    data: [
-                        1021,
-                        1533,
-                        552,
-                        466,
-                        1148,
-                        742,
-                        2636,
-                        321
-                    ],
+        }
 
-                    backgroundColor: '#d97706',
 
-                    borderRadius: 10
+        function obtenerValor(datos, nombre) {
 
-                }]
+            if (!datos || typeof datos !== "object") {
+                return 0;
+            }
 
-            },
+            if (datos[nombre] !== undefined) {
+                return Number(datos[nombre]) || 0;
+            }
 
-            options: {
+            const buscado = normalizar(nombre);
 
-                responsive: true,
+            const clave = Object.keys(datos).find(
+                k => normalizar(k) === buscado
+            );
 
-                plugins: {
-                    legend: {
-                        display: false
+            return clave !== undefined
+                ? Number(datos[clave]) || 0
+                : 0;
+
+        }
+
+
+        let graficoAdultoMayor = null;
+
+
+        function mostrarDatos(datosMicroredes, fecha) {
+
+            const valores = microredes.map(
+                microred => obtenerValor(datosMicroredes, microred)
+            );
+
+
+            const total = valores.reduce(
+                (suma, valor) => suma + valor,
+                0
+            );
+
+
+            document.getElementById(
+                "totalAdultoMayor"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "fechaIndicadores"
+            ).textContent = fecha || "Sin registrar";
+
+
+            document.getElementById(
+                "fechaMicroredes"
+            ).textContent = fecha || "Sin registrar";
+
+
+            const tabla =
+                document.getElementById("tablaMicroredes");
+
+            tabla.innerHTML = "";
+
+
+            microredes.forEach((nombre, indice) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "microItem";
+
+
+                const nombreElemento =
+                    document.createElement("span");
+
+                nombreElemento.textContent = nombre;
+
+
+                const valorElemento =
+                    document.createElement("span");
+
+                valorElemento.textContent = valores[indice];
+
+
+                item.appendChild(nombreElemento);
+                item.appendChild(valorElemento);
+
+                tabla.appendChild(item);
+
+            });
+
+
+            const canvas =
+                document.getElementById("graficoAdultoMayor");
+
+
+            if (!canvas) {
+                return;
+            }
+
+
+            if (graficoAdultoMayor) {
+                graficoAdultoMayor.destroy();
+            }
+
+
+            graficoAdultoMayor =
+                new Chart(canvas, {
+
+                    type: "bar",
+
+                    data: {
+
+                        labels: microredes,
+
+                        datasets: [{
+
+                            label:
+                                "Adultos Mayores Registrados",
+
+                            data: valores,
+
+                            backgroundColor:
+                                "#d97706",
+
+                            borderRadius: 10
+
+                        }]
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        plugins: {
+
+                            legend: {
+                                display: false
+                            }
+
+                        },
+
+                        scales: {
+
+                            y: {
+                                beginAtZero: true
+                            }
+
+                        }
+
                     }
+
+                });
+
+        }
+
+
+        async function cargarAdultoMayor() {
+
+            try {
+
+                const referencia =
+                    doc(
+                        db,
+                        "cursosVida",
+                        "adultoMayor"
+                    );
+
+
+                const resultado =
+                    await getDoc(referencia);
+
+
+                if (!resultado.exists()) {
+
+                    throw new Error(
+                        "No existe el documento cursosVida/adultoMayor."
+                    );
+
+                }
+
+
+                const datos =
+                    resultado.data();
+
+
+                mostrarDatos(
+                    datos.microredes || {},
+                    datos.fechaActualizacion || ""
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Error cargando datos de Adulto Mayor:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "totalAdultoMayor"
+                ).textContent = "—";
+
+
+                document.getElementById(
+                    "fechaIndicadores"
+                ).textContent = "No disponible";
+
+
+                document.getElementById(
+                    "fechaMicroredes"
+                ).textContent = "No disponible";
+
+
+                const tabla =
+                    document.getElementById(
+                        "tablaMicroredes"
+                    );
+
+
+                if (tabla) {
+
+                    tabla.innerHTML = `
+
+                        <div style="
+                            grid-column:1/-1;
+                            text-align:center;
+                            padding:25px;
+                            color:#64748b;
+                            background:white;
+                            border-radius:18px;
+                        ">
+
+                            No se pudieron cargar
+                            los datos desde Firebase.
+
+                        </div>
+
+                    `;
+
                 }
 
             }
 
-        });
+        }
+
+
+        cargarAdultoMayor();
 
     </script>
 

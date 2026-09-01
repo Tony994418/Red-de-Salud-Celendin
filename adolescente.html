@@ -487,56 +487,22 @@
         </p>
     </section>
 
-    <!--
+    <!-- INDICADORES -->
     <section>
-
         <div class="encabezadoSeccion">
-
-            <div class="fechaActualizacion">
-                Fecha de última actualización:
-                <strong>10/08/2026</strong>
-            </div>
-
+            <div class="fechaActualizacion">Fecha de última actualización: <strong id="fechaIndicadores">Cargando...</strong></div>
             <h2 class="titulo">Indicadores del Curso de Vida Adolescente</h2>
-
         </div>
-
-
-        <p class="subtitulo">
-            Información consolidada de todas las microredes.
-        </p>
-
+        <p class="subtitulo">Información consolidada de todas las microredes.</p>
         <div class="gridIndicadores">
-
-            <div class="indicador">
-                <h3>3250</h3>
-                <p>Adolescentes Registrados</p>
-            </div>
-
-            <div class="indicador">
-                <h3>8240</h3>
-                <p>Vacunas Aplicadas</p>
-            </div>
-
-            <div class="indicador">
-                <h3>5632</h3>
-                <p>CRED Realizados</p>
-            </div>
-
-            <div class="indicador">
-                <h3>421</h3>
-                <p>Suplementación</p>
-            </div>
-
+            <div class="indicador"><h3 id="totalAdolescentes">--</h3><p>Adolescentes Registrados</p></div>
         </div>
-
     </section>
-     -->
     <section class="microredes">
 
          <div class="fechaActualizacion">
                 Fecha de última actualización:
-                <strong>20/08/2026</strong>
+                <strong id="fechaMicroredes">Cargando...</strong>
             </div>
         <h2 class="titulo">
             Adolescentes por Microred
@@ -548,51 +514,11 @@
         </p>
 
         <div class="contenedorGrafico">
-            <canvas id="graficoNino"></canvas>
+            <canvas id="graficoAdolescente"></canvas>
         </div>
 
-        <div class="tablaMicroredes">
-
-            <div class="microItem">
-                <span>La Libertad de Pallán</span>
-                <span>475</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sorochuco</span>
-                <span>1026</span>
-            </div>
-
-            <div class="microItem">
-                <span>Cortegana</span>
-                <span>1420</span>
-            </div>
-
-            <div class="microItem">
-                <span>Huasmín</span>
-                <span>1542</span>
-            </div>
-
-            <div class="microItem">
-                <span>Sucre</span>
-                <span>1607</span>
-            </div>
-
-            <div class="microItem">
-                <span>Miguel Iglesias</span>
-                <span>669</span>
-            </div>
-
-            <div class="microItem">
-                <span>De Apoyo Celendín</span>
-                <span>2912</span>
-            </div>
-
-            <div class="microItem">
-                <span>No Pertenece a Ninguna Microred</span>
-                <span>329</span>
-            </div>
-
+        <div class="tablaMicroredes" id="tablaMicroredes">
+            <div class="microItem"><span>Cargando datos...</span><span>--</span></div>
         </div>
 
     </section>
@@ -722,58 +648,60 @@
     </footer>
 
 
-    <script>
-        const ctx =
-            document.getElementById('graficoNino');
+    <script type="module">
+        import { db } from "./firebase-config.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-        new Chart(ctx, {
+        const ordenMicroredes = ["Pallán","Sorochuco","Cortegana","Huasmin","Sucre","Hospital de Apoyo","Miguel Iglesias","No pertenece"];
+        const etiquetasGrafico = [...ordenMicroredes];
+        let graficoAdolescente = null;
 
-            type: 'bar',
-
-            data: {
-
-                labels: [
-                    'Pallán',
-                    'Sorochuco',
-                    'Cortegana',
-                    'Huasmín',
-                    'Sucre',
-                    'Miguel Iglesias',
-                    'De Apoyo Celendín',
-                    'No Pertenece'
-                ],
-
-                datasets: [{
-
-                    label: 'Niños Registrados',
-
-                    data: [
-                        475,
-                        1026,
-                        1420,
-                        1542,
-                        1607,
-                        669,
-                        2912,
-                        329
-                    ],
-
-                    backgroundColor: 'rgba(168,85,247,.75)',
-                    borderRadius: 10
-
-                }]
-
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
+        function normalizar(texto) {
+            return String(texto ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+        }
+        function obtenerValor(microredes, nombre) {
+            if (!microredes || typeof microredes !== "object") return 0;
+            if (microredes[nombre] !== undefined) return Number(microredes[nombre]) || 0;
+            const clave = Object.keys(microredes).find(k => normalizar(k) === normalizar(nombre));
+            return clave !== undefined ? Number(microredes[clave]) || 0 : 0;
+        }
+        function crearTabla(microredes) {
+            const tabla=document.getElementById("tablaMicroredes"); tabla.innerHTML="";
+            ordenMicroredes.forEach(nombre=>{
+                const item=document.createElement("div"); item.className="microItem";
+                const n=document.createElement("span"); n.textContent=nombre;
+                const v=document.createElement("span"); v.textContent=obtenerValor(microredes,nombre);
+                item.appendChild(n); item.appendChild(v); tabla.appendChild(item);
+            });
+        }
+        function crearGrafico(microredes) {
+            const valores=ordenMicroredes.map(nombre=>obtenerValor(microredes,nombre));
+            if(graficoAdolescente) graficoAdolescente.destroy();
+            graficoAdolescente=new Chart(document.getElementById("graficoAdolescente"),{
+                type:"bar",
+                data:{labels:etiquetasGrafico,datasets:[{label:"Adolescentes Registrados",data:valores,backgroundColor:"rgba(168,85,247,.75)",borderRadius:10}]},
+                options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:"Adolescentes por Microred"}},scales:{y:{beginAtZero:true,ticks:{precision:0},title:{display:true,text:"Cantidad"}}}}
+            });
+        }
+        async function cargarAdolescente(){
+            try{
+                const resultado=await getDoc(doc(db,"cursosVida","adolescente"));
+                if(!resultado.exists()) throw new Error("No existe el documento cursosVida/adolescente en Firestore.");
+                const datos=resultado.data(), microredes=datos.microredes||{}, fecha=datos.fechaActualizacion||"Sin registrar";
+                const valores=ordenMicroredes.map(nombre=>obtenerValor(microredes,nombre));
+                document.getElementById("totalAdolescentes").textContent=valores.reduce((a,b)=>a+b,0);
+                document.getElementById("fechaIndicadores").textContent=fecha;
+                document.getElementById("fechaMicroredes").textContent=fecha;
+                crearGrafico(microredes); crearTabla(microredes);
+            }catch(error){
+                console.error("Error cargando ADOLESCENTE desde Firebase:",error);
+                document.getElementById("totalAdolescentes").textContent="—";
+                document.getElementById("fechaIndicadores").textContent="No disponible";
+                document.getElementById("fechaMicroredes").textContent="No disponible";
+                document.getElementById("tablaMicroredes").innerHTML='<div class="microItem" style="grid-column:1 / -1;justify-content:center;"><span>No se pudieron cargar los datos desde Firebase.</span></div>';
             }
-
-        });
+        }
+        cargarAdolescente();
     </script>
 
     <script>
